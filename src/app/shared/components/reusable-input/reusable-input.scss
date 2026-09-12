@@ -1,0 +1,56 @@
+
+input{
+  padding: 14px 16px ;
+  background-color: #D7E2FF;
+  font-size: 16px;
+  color: #737685;
+  font-family: Inter;
+font-weight: 400;
+font-style: Regular;
+font-size: 16px;
+leading-trim: NONE;
+line-height: 100%;
+letter-spacing: 0px;
+vertical-align: middle;
+box-sizing: border-box;
+
+
+}
+.hint{
+  font-family: Inter;
+font-weight: 400;
+font-style: Regular;
+font-size: 11px;
+leading-trim: NONE;
+line-height: 16.5px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: #C3C6D6;
+padding: 4px;
+}
+label{
+  font-family: Inter;
+font-weight: 700;
+font-style: Bold;
+font-size: 11px;
+leading-trim: NONE;
+line-height: 16.5px;
+letter-spacing: 0.55px;
+vertical-align: middle;
+text-transform: uppercase;
+color: #4F5F7B;
+
+
+}
+
+// ----
+
+.input-container {
+  box-sizing: border-box;
+}
+
+.icon-posision{
+  top: 50%;
+ right: 2%;
+ transform: translateY(-50%);
+}

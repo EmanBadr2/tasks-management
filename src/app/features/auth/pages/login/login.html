@@ -1,0 +1,76 @@
+
+<div class="flex items-center justify-center w-full my-auto ">
+  <div class="mainForm-container md:p-12 rounded-lg  w-full" >
+     <!-- Header -->
+      <header>
+        <div class="header-section pb-10">
+        <h2 class=" header-text"> Welcome Back </h2>
+        <h5 class="second-text">Please enter your details to access your
+           workspacePlease enter your details to access your workspace </h5>
+      </div>
+      </header>
+<form
+ class="d-flex flex-column space-y-5 gap-6  pb-4"
+  (submit)="login($event)" 
+   >
+
+  <app-reusable-input
+[field]="LoginForm.email"
+label="email"
+type="email"
+placeholder="Enter your email"
+ />
+
+  <app-reusable-input
+[field]="LoginForm.password"
+label="password"
+type="password"
+placeholder="Enter your password"
+ />
+
+
+<div class=" flex justify-between align-center">
+  <div class="remmber-me ">
+    <input type="checkbox" >
+    <span> Remember Me </span>
+  </div>
+  <div class="forgetpass"> 
+    <button 
+    type="button"
+    [routerLink]="'/auth/forgotPassword'" 
+    class="
+    cursor-pointer 
+    ">
+      Forgot Password?
+    </button>
+  </div>
+</div>
+
+<div>
+
+ <button 
+ [disabled]="LoginForm().invalid()"
+ type="submit"
+ class=" auth-btn w-full cursor-pointer 
+ rounded-lg shadow-sm
+  disabled:cursor-not-allowed
+  disabled:opacity-60 "
+  >
+  log in
+</button>
+</div>
+
+
+</form>
+
+
+<div class="footer-container ">
+  <app-footer  
+  [label]="`Don't have an account? `"
+  [navigateName]="`Sign Up`"
+  [navigatePath]="'/auth/register'"
+  />
+
+</div>
+
+</div>

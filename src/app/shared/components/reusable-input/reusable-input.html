@@ -1,0 +1,60 @@
+
+
+
+
+
+<!-- @if (field().touched() && field.invalid()) {
+@for (error of field.errors(); track error.kind) {
+<p class="label-text-alt text-error block border-1">  {{ error.message }}</p>
+}}  -->
+
+
+
+
+
+<div class="   ">
+
+  <label for=""> {{label()}}</label>
+  <div class="input-container relative   ">
+    <input
+  class="w-full  rounded border-0    px-4 py-3.5   focus:ring-blue-600/50
+  outline-none  ring-transparent focus:ring-2
+  disabled:cursor-not-allowed   disabled:opacity-60
+   "
+  [type]="type()  === 'password' && this.passwordVisible() ? 'text' : type() "
+   [formField]="field()"
+   [placeholder]="placeholder()"
+   
+  >
+  @if (hint()) {
+   <div class="hint"> 3-50 characters, letters only.</div>
+  }
+
+
+
+
+
+ @if (type() === 'password' && accessShowIcon() ) {
+  <button
+  class=" password-toggle icon-posision cursor-pointer top-50  absolute "
+  type="button"
+  (click)=" togglePasswordVisibility()"
+  >
+  @if(passwordVisible()){
+    <!-- invisible icon -->
+       <span>  invisable </span>
+  }
+  @else {
+    <!-- visible Icon -->
+ <span> visible</span>
+  }
+
+  <!-- <img src="../../../../assets/icons/Icon.svg"class="" alt="x" > -->
+  </button>
+
+ }
+
+
+
+</div>
+  </div>

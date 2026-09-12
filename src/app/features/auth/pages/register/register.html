@@ -1,0 +1,96 @@
+<div class="flex items-center justify-center w-full my-auto ">
+  <div class="mainForm-container md:p-12 rounded-lg  w-full" >
+   
+      <header>
+        <div class="header-section pb-10">
+        <h2 class="header-text"> Create your workspace </h2>
+        <h5 class="second-text "> Join the editorial approach to task management. </h5>
+      </div>
+      </header>
+ 
+ 
+ <form 
+ class="d-flex flex-column space-y-3 gap-6  pb-4"
+ (submit)="signUp($event)" >
+
+<app-reusable-input
+[field]="registerForm.data.name"
+label="Name"
+type="text"
+placeholder="Enter your full name"
+hint="3-50 characters, letters only."
+ />
+<app-reusable-input
+[field]="registerForm.email"
+label="email"
+type="email"
+placeholder="yourname@company.com"
+ />
+<app-reusable-input
+[field]="registerForm.data.job_title"
+label="Job Title (Optional)"
+type="text"
+placeholder="e.g. Project Manager"
+ />
+  
+<div class="Password-grid grid  grid-cols-2 gap-2" >
+  <app-reusable-input
+[field]="registerForm.password"
+ label="Password"
+ placeholder="Password"
+type="password"
+ />
+
+<app-reusable-input
+[field]="registerForm.confirmPassword"
+label="Confirm Password"
+[accessShowIcon]="false"
+ placeholder="Repeat your password"
+type="password"
+
+ />
+</div>
+
+
+ <div class="validation-hints gap-2 p-4 rounded-lg">
+
+ @for (state of passwordCheckedStats(); track state.label) {
+ <div class="hint-container flex flex-row gap-2 ">
+  
+    @if (state.inCase) {
+    <!-- <img src="../../../../../assets/icons/Icon2.svg" alt="icon"> -->
+       <span  class="checked-icon"> done</span>
+    }
+    @else {
+       <span  class="checked-icon"> not </span>
+    <!-- <img src="../../../../../assets/icons/ckecked-icon.svg" alt="icon"> -->
+    }
+    <p class=""> {{ state.label}} </p>
+ </div>
+ 
+}
+  </div>
+  
+
+ 
+ <button 
+ [disabled]="passwordValid() && registerForm().invalid() "
+ type="submit"
+ class=" auth-btn w-full cursor-pointer 
+ rounded-lg shadow-sm
+  disabled:cursor-not-allowed
+  disabled:opacity-60 "
+ > Create Account
+  </button>
+
+ </form>
+
+  <app-footer  
+  [label]="` Already have an account?`"
+  [navigateName]="`log in`"
+  [navigatePath]="'/auth/login'"
+  />
+
+</div>
+
+</div>

@@ -1,0 +1,28 @@
+.mainForm-container {
+background: rgba(255, 255, 255, 1);
+box-shadow: 0px 24px 48px 0px rgba(4, 27, 60, 0.06);
+}
+
+.icon-color{
+  color: #737685;
+}
+
+.validation-hints{
+background: rgba(232, 237, 255, 1);
+}
+.hint-container{
+  // gap: 8px;
+  font-family: Inter;
+font-weight: 400;
+font-style: Regular;
+font-size: 11px;
+line-height: 16.5px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: rgba(67, 70, 84, 1);
+// checked icon color   color: (0, 78, 50, 1) ;
+// unchecked icon color   color: rgba(115, 118, 133, 1);
+
+}
+
+
