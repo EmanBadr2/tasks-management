@@ -1,2 +1,27 @@
+// layout Desktop
+.main-layout{
+  background: linear-gradient(0deg, #F9F9FF, #F9F9FF),
+              radial-gradient(132.58% 132.58% at -4325% -4325%, #D7E2FF 1.18%, rgba(215, 226, 255, 0) 1.18%);
+
+}
+// -------------------------------------------------------------------------
+// aside
+aside{
+background: rgba(241, 243, 255, 1);
+}
 
 
+// ---------------------------------------------
+// right wrapper
+.headerbar{
+//   width: 1024;
+// height: 64;
+justify-content: space-between;
+padding: 12px 24px ;
+
+border-bottom-width: 1px;
+
+background: rgba(249, 249, 255, 1);
+
+border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}

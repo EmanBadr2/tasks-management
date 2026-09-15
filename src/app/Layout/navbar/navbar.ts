@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { UserData } from '../../core/models/user-interface';
 
 @Component({
@@ -10,7 +10,6 @@ import { UserData } from '../../core/models/user-interface';
 export class Navbar {
   userData = input<null | UserData>()
 
-
   creatAvatar(){
     if(this.userData())
     {
@@ -20,9 +19,10 @@ export class Navbar {
       const avatar = userName[0].charAt(0).toUpperCase()
       return avatar
     }
-      const avatar = (userName[0].charAt(0) + userName[length-1].charAt(0)).toUpperCase()
-     return avatar
+      // const avatar = (userName[0].charAt(0) + userName[length-1].charAt(0)).toUpperCase()
+    //  return avatar
     }
+    return ''
   }
 
 

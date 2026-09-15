@@ -1,13 +1,21 @@
 <div class="main-layout h-screen w-screen flex">
-<aside class=" left-wrapper flex-shrink-0 bg-red-400 " >
- <app-sidebar></app-sidebar>
-</aside>
-<div class="right-wrapper flex flex-col flex-grow bg-blue-500">
-  <app-navbar [userData]="userData()" />
-  <div class="main-content flex-grow overflow-y-auto  bg-red-200">
+
+ <aside class=" left-wrapper  flex-shrink-0 p-4 " >
+   <app-sidebar></app-sidebar>
+ </aside>
+
+
+
+<!-- right-wrapper   -->
+<div class="right-wrapper flex flex-col flex-grow ">
+  <div class=" headerbar">  <app-navbar [userData]="userData()" /> </div>
+
+  <div class="main-content flex-grow overflow-y-auto  ">
     <!-- route all feature [ project / tasks / ...] -->
      <router-outlet></router-outlet>
+    
   </div>
 </div>
 
 </div>
+

@@ -1,0 +1,66 @@
+// aside
+
+
+aside  .sidebar-header{
+
+font-weight: 700;
+font-style: Bold;
+font-size: 20px;
+
+line-height: 28px;
+letter-spacing: -0.5px;
+vertical-align: middle;
+color: rgba(4, 27, 60, 1);
+}
+// ------------------------
+// nav in side bar
+li{
+
+font-weight: 500;
+font-style: Medium;
+font-size: 14px;
+
+line-height: 20px;
+letter-spacing: 0px;
+vertical-align: middle;
+
+color: rgba(4, 27, 60, 1);
+
+}
+.active{
+  background: rgba(255, 255, 255, 1);
+box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  color: rgba(0, 61, 155, 1);
+  border-radius: 4px;
+}
+
+// ----------------
+// collapes-logout-container 
+.collapes-logout-container {
+// padding-top: 24px;
+border-top-width: 1px;
+border-top: 1px solid rgba(195, 198, 214, 0.2) ;
+
+// text
+
+font-weight: 500;
+font-style: Medium;
+font-size: 14px;
+
+line-height: 20px;
+letter-spacing: 0px;
+text-align: center;
+vertical-align: middle;
+
+.collapes{
+  color: rgba(4, 27, 60, 1);
+}
+.logout{
+  // color: rgba(186, 26, 26, 1);
+  color: var(--color-Error);
+}
+
+
+}
+
+
