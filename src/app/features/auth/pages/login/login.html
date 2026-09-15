@@ -1,5 +1,5 @@
 
-<div class="flex items-center justify-center w-full my-auto ">
+<div class=" flex items-center justify-center w-full my-auto ">
   <div class="mainForm-container md:p-12 rounded-lg  w-full" >
      <!-- Header -->
       <header>
@@ -11,7 +11,7 @@
       </header>
 <form
  class="d-flex flex-column space-y-5 gap-6  pb-4"
-  (submit)="login($event)" 
+  (submit)="login($event)"
    >
 
   <app-reusable-input
@@ -20,52 +20,66 @@ label="email"
 type="email"
 placeholder="Enter your email"
  />
-
-  <app-reusable-input
+@if (LoginForm.email().errors() && LoginForm.email().touched() ) {
+ @for (err of LoginForm.email().errors() ; track $index) {
+   <small class="text-red-800 text-xs">
+  * {{err.message}}
+ </small>
+ }
+}
+<app-reusable-input
 [field]="LoginForm.password"
 label="password"
 type="password"
 placeholder="Enter your password"
- />
 
+
+ />
+@if (LoginForm.password().errors() && LoginForm.password().touched() ) {
+ @for (err of LoginForm.password().errors() ; track $index) {
+   <small class="text-red-800 text-xs">
+  * {{err.message}}
+ </small>
+ }
+
+}
 
 <div class=" flex justify-between align-center py-2">
-  <div class="remmber-me ">
-    <input type="checkbox" >
+  <div class="remmber-me flex align-center ">
+    <input
+    type="checkbox" class="cursor-pointer" >
     <span class="pl-2"> Remember Me </span>
   </div>
-  <div class="forgetpass"> 
-    <button 
+  <div class="forgetpass">
+    <button
     type="button"
-    [routerLink]="'/auth/forgotPassword'" 
+    [routerLink]="'/auth/forgotPassword'"
     class="
-    cursor-pointer 
+    cursor-pointer
     ">
       Forgot Password?
     </button>
   </div>
 </div>
 
-<div>
-
- <button 
+<div class=" submit-btn">
+ <button
  [disabled]="LoginForm().invalid()"
  type="submit"
- class=" auth-btn w-full cursor-pointer 
+ class=" auth-btn w-full cursor-pointer
  rounded-lg shadow-sm
   disabled:cursor-not-allowed
-  disabled:opacity-60 "
+  disabled:opacity-80 "
   >
   log in
 </button>
 </div>
 
-
 </form>
 
 
 <div class="footer-container ">
-  <app-footer  
+  <app-footer
   [label]="`Don't have an account? `"
   [navigateName]="`Sign Up`"
   [navigatePath]="'/auth/register'"

@@ -53,7 +53,7 @@ registerForm = form(this.registerModel , (schemaPath)=>{
     }
   }
   return null ;
- 
+
  })
 
 })
@@ -61,18 +61,18 @@ registerForm = form(this.registerModel , (schemaPath)=>{
 passwordValue = computed( ()=> this.registerModel().password)
 hasMinLength =computed<boolean>( ()=> this.passwordValue().length > 8 )
 hasMixedCase = computed<boolean>( ()=>
-      /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])\S*$/.test(this.passwordValue()) 
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])\S*$/.test(this.passwordValue())
 )
 hasOneSpecialChar = computed<boolean>( ()=>
 /[!@#$%^&*]/.test(this.passwordValue())
 )
-passwordValid = computed<boolean>( ()=> 
+passwordValid = computed<boolean>( ()=>
   this.hasMinLength()
- && this.hasOneSpecialChar()  
+ && this.hasOneSpecialChar()
 && this.hasMixedCase()
 )
-passwordCheckedStats = computed( ()=> 
-[ 
+passwordCheckedStats = computed( ()=>
+[
   {label:  ' One uppercase, lowercase, and digit' , inCase : this.hasMixedCase() } ,
   {label: 'At least 8 characters' , inCase : this.hasMinLength() } ,
   {label: 'One special character' , inCase : this.hasOneSpecialChar() } ,
@@ -82,6 +82,8 @@ passwordCheckedStats = computed( ()=>
 
 
 signUp(event:Event){
+  console.log(this.registerForm());
+
 event.preventDefault();
   if (this.registerForm().invalid()) {
       return;
@@ -97,7 +99,7 @@ console.log(confirmPassword);
     error:(err)=>{
         console.log('STATUS:', err.status);
        console.log('err:', err.error);
-    } 
+    }
 
     })
 

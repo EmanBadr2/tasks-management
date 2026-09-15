@@ -4,10 +4,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'MainLayout',
     pathMatch: 'full',
   },
- 
+
     {
     path: 'auth',
   loadChildren: () =>
@@ -15,5 +15,15 @@ export const routes: Routes = [
         m => m.AuthRoutes
       ),
   },
+
+    {
+    path: 'MainLayout',
+  loadChildren: () =>
+      import( './Layout/layout-routes').then(
+        m => m.LayoutRoutes
+      )
+  },
+
+
 
 ];

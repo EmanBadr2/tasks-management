@@ -11,12 +11,15 @@ import { FieldTree, FormField } from '@angular/forms/signals';
 export class ReusableInput {
 
   field = input.required<FieldTree<string >>();
+  // field = input.required<any>();
+
   id = input('');
 
   label = input<string>('');
   hint = input()
   type = input< 'text' | 'email' | 'password' | 'tel' | 'search'>('text');
   placeholder = input('');
+
 
 
 passwordVisible = signal<boolean>(false)

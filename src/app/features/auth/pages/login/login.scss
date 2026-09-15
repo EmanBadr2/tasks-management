@@ -1,6 +1,4 @@
 
-
-
 .remmber-me , .forgetpass{
   font-family: Inter;
 font-weight: 500;
@@ -13,6 +11,11 @@ vertical-align: middle;
 
 }
 .remmber-me input{
+  width: 16px;
+height: 16px;
+border-radius: 2px;
+border-width: 1px;
+
   background: rgba(241, 243, 255, 1);
   border: 1px solid rgba(195, 198, 214, 1)
 }
@@ -33,8 +36,7 @@ color: rgba(0, 61, 155, 1);
 .footer-container{
   width: 384;
 height: 53;
-angle: 0 deg;
-opacity: 1;
+
 padding-top: 32px;
 top: 485px;
 left: 48px;

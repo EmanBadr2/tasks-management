@@ -8,7 +8,7 @@ export const AuthRoutes : Routes = [
     children: [
       {
         path : '',
-        redirectTo: 'register'  ,
+        redirectTo: 'login'  ,
          pathMatch: 'full',
       },
 
@@ -18,21 +18,23 @@ export const AuthRoutes : Routes = [
       ),
    },
 
-      
+
    { path : 'register' , loadComponent : () =>
       import('./pages/register/register').then(
         m => m.Register
       ),
    },
 
-     ]
-   } ,
-     { path : 'forgotPassword' , loadComponent : () =>
+      { path : 'forgotPassword' , loadComponent : () =>
       import('./components/forgot-password/forgot-password').then(
         m => m.ForgotPassword
       ),
    },
 
+
+     ]
+   } ,
+  
 
 ];
 
