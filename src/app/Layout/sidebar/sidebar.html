@@ -1,45 +1,65 @@
 <aside class="  flex flex-col justify-between  h-full  " >
 
   <!-- header -->
-  <div class="sidebar-header flex px-2 gap-2 pb-8   ">
-
-    <img src="../../../../public/Icontest.svg" alt="x">
-    <h4> TASKLY </h4>
+  <div class="sidebar-header flex px-2 gap-2 pb-8  items-center ">
+     <img src="../../../../Icon.svg" width="20" alt="">
+    <span class=" "
+    [class.hidden]="isCollapse()"
+    > TASKLY </span>
     </div>
 
-    <!-- content -->
+    <!-- main Navigate -->
    <div class="saidbar-nav gap-1  flex-grow  ">
-    <ul class=" flex flex-col gap-1   ">
-      <li class="flex gap-3 px-3 py-[10px] rounded-sm  active ">
-        <p> icon </p>
-         <div>
-          <p> project</p>
-         </div>
 
-      </li>
-      <li class="flex gap-3 px-3 py-[10px]  ">
-        <p> icon </p>
-         <div>
-          <p> state</p>
-         </div>
+     <nav class=" flex flex-col gap-1   ">
+      <a
+      routerLink="/MainLayout/Projects"
+      routerLinkActive="active"
+      class="flex gap-3 px-4 py-[10px] rounded-sm  active items-center "
+       >
+          <img src="../../../../Icon.svg" width="20" alt="">
+          <span 
+           [class.hidden]="isCollapse()" > Project </span>
+      </a>
+        <a
+        routerLink="/MainLayout/ProjectsList"
+      class="flex gap-3 px-3 py-[10px]  "
+       >
+          <img src="../../../../Icon.svg" width="20" alt="">
+          <span 
+           [class.hidden]="isCollapse()"> state </span>
+      </a>
 
-      </li>
+    </nav> 
 
-    </ul>
+
+
   </div> 
 
-<!-- logout -->
-<div class="collapes-logout-container flex flex-col gap-1 pt-[24px]  ">
-  <div class="collapes flex gap-3 py-[10px] px-3 ">
-    <img src="../../../../collapesIcon.svg" alt="cc">
-    <button class=" collapes-btn"> collapes  </button>
-     </div>
-  <div class="logout  flex gap-3 py-[10px] px-3 ">
-    <img src="../../../../Icon.svg" 
-    width="20"
-    alt="">
-  <button class=" logout-btn"> Logout </button>
-  </div>
+<!-- collapse && logout -->
+<div class="collapse-logout-container flex flex-col gap-1 pt-[24px]  ">
+ 
+    <button
+    type="button"
+     class=" collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer  "
+     (click)="collapseSidebar()"
+     > 
+     <img src="../../../../Icon.svg" width="20" alt="">
+     <span 
+      [class.hidden]="isCollapse()">collapes  </span>
+      </button>
+
+  <button 
+   type="button"
+  (click)="logout()"
+  class=" logout-btn flex gap-3 py-[10px] px-3 cursor-pointer"
+  >
+    <img src="../../../../Icon.svg"  width="20" alt="">
+    <span
+     [class.hidden]="isCollapse()">  Logout </span>
+  
+   </button>
+
 </div>
 
 </aside>
