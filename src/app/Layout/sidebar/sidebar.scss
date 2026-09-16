@@ -14,16 +14,20 @@ color: rgba(4, 27, 60, 1);
 }
 // ------------------------
 // nav in side bar
-nav a{
+nav {
+  width: 224;
+height: 40;
+gap: 12px;
 
+
+}
+nav {
 font-weight: 500;
 font-style: Medium;
 font-size: 14px;
-
 line-height: 20px;
 letter-spacing: 0px;
 vertical-align: middle;
-
 color: rgba(4, 27, 60, 1);
 
 }

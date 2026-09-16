@@ -4,7 +4,7 @@
   <div class="sidebar-header flex px-2 gap-2 pb-8  items-center ">
      <img src="../../../../Icon.svg" width="20" alt="">
     <span class=" "
-    [class.hidden]="isCollapse()"
+    [class.hidden]="isCollapsed()"
     > TASKLY </span>
     </div>
 
@@ -19,15 +19,17 @@
        >
           <img src="../../../../Icon.svg" width="20" alt="">
           <span 
-           [class.hidden]="isCollapse()" > Project </span>
+          class="  md:w-[224px] "
+           [class.hidden]="isCollapsed()" > Project </span>
       </a>
         <a
         routerLink="/MainLayout/ProjectsList"
-      class="flex gap-3 px-3 py-[10px]  "
+      class="flex gap-3 px-3 py-[10px]   "
        >
           <img src="../../../../Icon.svg" width="20" alt="">
           <span 
-           [class.hidden]="isCollapse()"> state </span>
+          class="  md:w-[224px] "
+           [class.hidden]="isCollapsed()"> state </span>
       </a>
 
     </nav> 
@@ -42,11 +44,11 @@
     <button
     type="button"
      class=" collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer  "
-     (click)="collapseSidebar()"
+     (click)="collapsedSidebar()"
      > 
      <img src="../../../../Icon.svg" width="20" alt="">
      <span 
-      [class.hidden]="isCollapse()">collapes  </span>
+      [class.hidden]="isCollapsed()">collapes  </span>
       </button>
 
   <button 
@@ -56,7 +58,7 @@
   >
     <img src="../../../../Icon.svg"  width="20" alt="">
     <span
-     [class.hidden]="isCollapse()">  Logout </span>
+     [class.hidden]="isCollapsed()">  Logout </span>
   
    </button>
 

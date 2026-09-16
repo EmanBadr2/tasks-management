@@ -9,13 +9,14 @@ import { RouterLink } from '@angular/router';
 })
 export class Sidebar {
 
-   isCollapse = signal(false)
+   isCollapsed = signal(false)
    
-  collapseSidebar(){
-    this.isCollapse.update( value => !value)
-    console.log(this.isCollapse());
+  collapsedSidebar(){
+    this.isCollapsed.update( value => !value)
+    console.log(this.isCollapsed());
     
    }
+   
    logout(){
     console.log('logout');
     
