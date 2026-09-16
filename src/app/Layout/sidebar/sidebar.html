@@ -15,7 +15,8 @@
       <a
       routerLink="/MainLayout/Projects"
       routerLinkActive="active"
-      class="flex gap-3 px-4 py-[10px] rounded-sm  active items-center "
+      class="flex gap-3 px-4 py-[10px] rounded-sm   items-center "
+       [class.active]="isActive('/MainLayout/Projects')"
        >
           <img src="../../../../Icon.svg" width="20" alt="">
           <span
@@ -23,8 +24,11 @@
            [class.hidden]="isCollapsed()" > Project </span>
       </a>
         <a
+       
         routerLink="/MainLayout/ProjectsList"
+
       class="flex gap-3 px-3 py-[10px]   "
+        [class.active]="isActive('/MainLayout/ProjectsList')"
        >
           <img src="../../../../Icon.svg" width="20" alt="">
           <span
@@ -34,11 +38,11 @@
 
       <!-- --------------- -->
        <!--Active projects -->
-       <div class="active-projects flex flex-col gap-2.5  pt-3">
-        <div class=" pt-4 border-t border-black/10 ">
+       <div class="active-projects flex flex-col gap-2.5  pt-3   ">
+        <div class=" pt-4 border-t border-black/10 relative">
 
             <button
-            (click)="toggleActiveProject()"
+            (click)="toggleProjectMenu()"
             class=" flex gap-3 p-3
              rounded-t-[6px] bg-[#D7E2FF]
              w-full cursor-pointer   "
@@ -49,12 +53,53 @@
                 [class.hidden]="isCollapsed()"
                >Active Project Na...</span>
             <!-- <img src="../../../../SVG.png" alt="x"> -->
-             <span  [class.hidden]="isCollapsed()"> DDIcon  </span>
+             <span  [class.hidden]="isCollapsed()"> 
+              <img src="../../../../Icon.svg"  alt="">
+            </span>
             </button>
 
-        <div class="dropdown
+            <!-- open in sidebar -->
+            @if(!isCollapsed() && isMenuOpen() ){
+              
+              <div class="project-menu 
+                  flex flex-col gap-1 p-2 rounded-b-[6px]   ">
+                  @for (item of projectMenuItems; track item.label) {
+                        <a
+         class="item flex gap-3 px-4 py-[10px]  "
+          [routerLink]="item.route"
+          
+           [class.active-project]="isActive(item.route)"
+          
+         >
+           <img [src]="item.srcIcon" alt="x">
+         <span class=" text-semibold "> {{item.label}}</span>
+         </a>
+                  }
+
+              </div>
+            }
+            <!-- popup out sidebar -->
+             @if(isCollapsed() && isMenuOpen() ){ 
+              <div class="project-popup flex flex-col gap-1 
+               p-2  rounded-r-lg
+              ">
+                @for (item of projectMenuItems; track item.label) {
+                    <a
+         class="item flex gap-3 px-4 py-[10px]  md:w-[230px] "
+          [routerLink]="item.route"
+           [class.active-project]="isActive(item.route)"
+         >
+           <img [src]="item.srcIcon" alt="">
+           <span class=" text-semibold "> {{item.label}}</span>
+         </a>
+                }
+              </div>
+            }
+           
+<!-- 
+        <div class="project-menu
          flex flex-col gap-1 p-2 rounded-b-[6px]   "
-          [class.hidden]="hiddenItem()"
+          [class.hidden]="!isMenuOpen()"
          >
 
          <a
@@ -82,12 +127,8 @@
          </a>
 
 
+      </div> -->
 
-
-
-
-
-      </div>
         </div>
 
        </div>
@@ -108,7 +149,7 @@ text-medium  align-text
     <button
     type="button"
      class=" collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer  "
-     (click)="collapsedSidebar()"
+     (click)="toggleCollapse()"
      >
      <img src="../../../../Icon.svg" width="20" alt="">
      <span

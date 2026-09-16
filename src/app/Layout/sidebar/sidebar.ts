@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   imports: [RouterLink],
@@ -9,17 +9,46 @@ import { RouterLink } from '@angular/router';
 })
 export class Sidebar {
 
-   isCollapsed = signal(false)
-   hiddenItem = signal(false)
 
-   toggleActiveProject(){
-  this.hiddenItem.update( value => !value)
-  
+private router = inject( Router)
+activeLink = this.router.url
+   isCollapsed = signal(false)
+   isMenuOpen = signal(true)
+   projectMenuItems= [
+    {label : 'Epics' ,
+      srcIcon : "../../../../Icon.svg" ,
+      route: '/MainLayout/Projects'
+    } ,
+     {label : 'Tasks' ,
+      srcIcon : "../../../../Icon.svg" ,
+      route: '/MainLayout/ProjectsList'
+    } ,
+     {label : 'Members' ,
+      srcIcon : "../../../../Icon.svg" ,
+      route: '/MainLayout/Pro'
+    } ,
+     {label : 'Details' ,
+      srcIcon : "../../../../Icon.svg" ,
+      route: '/MainLayout/Pr'
+    } ,
+   ]
+
+   isActive(route:null| string):boolean{
+    this.activeLink=this.router.url 
+    if(this.activeLink === route){
+        return true
+    }
+   
+    return false
+    
+   }
+
+   toggleProjectMenu(){
+  this.isMenuOpen.update( value => !value)
    }
    
-  collapsedSidebar(){
+  toggleCollapse(){
     this.isCollapsed.update( value => !value)
-   
    }
    
    logout(){
