@@ -1,0 +1,28 @@
+//  600 500 400
+
+
+.align-text {
+text-align: center;
+vertical-align: middle;
+}
+
+.main-text-color {
+  color: var(--color-text );
+}
+
+
+.text-bold {
+font-weight: 700;
+font-style:  Bold;
+}
+.text-semibold{
+ font-weight: 600;
+ font-style: Semi Bold;
+
+}
+.text-medium {
+font-weight: 500;
+font-style: Medium;
+font-size: 14px;
+line-height: 20px;
+}

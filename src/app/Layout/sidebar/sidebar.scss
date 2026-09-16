@@ -1,39 +1,27 @@
 // aside
 
-
 aside  .sidebar-header{
-
-font-weight: 700;
-font-style: Bold;
 font-size: 20px;
-
 line-height: 28px;
 letter-spacing: -0.5px;
 vertical-align: middle;
-color: rgba(4, 27, 60, 1);
+color:var(--color-text ) ;
 }
 // ------------------------
 // nav in side bar
-nav {
-  width: 224;
-height: 40;
-gap: 12px;
 
-
-}
 nav {
-font-weight: 500;
-font-style: Medium;
+  
 font-size: 14px;
 line-height: 20px;
 letter-spacing: 0px;
 vertical-align: middle;
-color: rgba(4, 27, 60, 1);
+color:var(--color-text );
 
 }
 .active{
   background: rgba(255, 255, 255, 1);
-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   color: rgba(0, 61, 155, 1);
   border-radius: 4px;
 }
@@ -41,23 +29,15 @@ box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 // ----------------
 // collapes-logout-container 
 .collapse-logout-container {
-// padding-top: 24px;
+
 border-top-width: 1px;
 border-top: 1px solid rgba(195, 198, 214, 0.2) ;
 
-// text
-
-font-weight: 500;
-font-style: Medium;
-font-size: 14px;
-
-line-height: 20px;
 letter-spacing: 0px;
-text-align: center;
-vertical-align: middle;
+
 
 .collapse-btn{
-  color: rgba(4, 27, 60, 1);
+  color:var(--color-text );
 }
 .logout-btn{
   color: var(--color-Error);
