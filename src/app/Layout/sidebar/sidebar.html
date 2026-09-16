@@ -18,7 +18,7 @@
       class="flex gap-3 px-4 py-[10px] rounded-sm  active items-center "
        >
           <img src="../../../../Icon.svg" width="20" alt="">
-          <span 
+          <span
           class="  md:w-[224px] "
            [class.hidden]="isCollapsed()" > Project </span>
       </a>
@@ -27,35 +27,95 @@
       class="flex gap-3 px-3 py-[10px]   "
        >
           <img src="../../../../Icon.svg" width="20" alt="">
-          <span 
+          <span
           class="  md:w-[224px] "
-           [class.hidden]="isCollapsed()"> Statistics </span>
+           [class.hidden]="isCollapsed()" > Statistics </span>
       </a>
 
-    </nav> 
+      <!-- --------------- -->
+       <!--Active projects -->
+       <div class="active-projects flex flex-col gap-2.5  pt-3">
+        <div class=" pt-4 border-t border-black/10 ">
+
+            <button
+            (click)="toggleActiveProject()"
+            class=" flex gap-3 p-3
+             rounded-t-[6px] bg-[#D7E2FF]
+             w-full cursor-pointer   "
+            >
+            <img src="../../../../Icon.svg" width="20" alt="">
+              <span
+               class=" text-semibold "
+                [class.hidden]="isCollapsed()"
+               >Active Project Na...</span>
+            <!-- <img src="../../../../SVG.png" alt="x"> -->
+             <span  [class.hidden]="isCollapsed()"> DDIcon  </span>
+            </button>
+
+        <div class="dropdown
+         flex flex-col gap-1 p-2 rounded-b-[6px]   "
+          [class.hidden]="hiddenItem()"
+         >
+
+         <a
+         class="item flex gap-3 px-4 py-[10px]  active-project"
+          routerLink="/MainLayout/"
+         >
+           icon
+         <span class=" text-semibold "> Epics</span>
+         </a>
+
+         <a
+         class="item flex gap-3 px-4 py-[10px]"
+          routerLink="/MainLayout/"
+         >
+           icon
+         <span class=" text-semibold "> Epics</span>
+         </a>
+
+         <a
+         class="item flex gap-3 px-4 py-[10px]"
+          routerLink="/MainLayout/"
+         >
+           icon
+         <span class=" text-semibold "> Epics</span>
+         </a>
 
 
 
 
-  </div> 
+
+
+
+      </div>
+        </div>
+
+       </div>
+
+    </nav>
+
+
+
+
+  </div>
 
 <!-- collapse && logout -->
-<div class="collapse-logout-container flex flex-col gap-1 pt-[24px] 
-text-medium  align-text 
+<div class="collapse-logout-container flex flex-col gap-1 pt-[24px]
+text-medium  align-text
 
 ">
- 
+
     <button
     type="button"
      class=" collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer  "
      (click)="collapsedSidebar()"
-     > 
+     >
      <img src="../../../../Icon.svg" width="20" alt="">
-     <span 
+     <span
       [class.hidden]="isCollapsed()">collapes  </span>
       </button>
 
-  <button 
+  <button
    type="button"
   (click)="logout()"
   class=" logout-btn flex gap-3 py-[10px] px-3 cursor-pointer"
@@ -63,7 +123,7 @@ text-medium  align-text
     <img src="../../../../Icon.svg"  width="20" alt="">
     <span
      [class.hidden]="isCollapsed()">  Logout </span>
-  
+
    </button>
 
 </div>

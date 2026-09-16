@@ -10,11 +10,16 @@ import { RouterLink } from '@angular/router';
 export class Sidebar {
 
    isCollapsed = signal(false)
+   hiddenItem = signal(false)
+
+   toggleActiveProject(){
+  this.hiddenItem.update( value => !value)
+  
+   }
    
   collapsedSidebar(){
     this.isCollapsed.update( value => !value)
-    console.log(this.isCollapsed());
-    
+   
    }
    
    logout(){
