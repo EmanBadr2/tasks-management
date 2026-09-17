@@ -29,5 +29,13 @@ export class MainLayout {
   })
 
   }
+
+menuOpened = signal(false)
+  toggleSidebar(){
+    this.menuOpened.update( value => ! value)
+    console.log(this.menuOpened());
+    
+    
+  }
   
 }

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -11,24 +11,26 @@ export class Sidebar {
 
 
 private router = inject( Router)
+ menuMobileCase = input(false)
+ footerMobileCase = input(false)
 activeLink = this.router.url
    isCollapsed = signal(false)
    isMenuOpen = signal(true)
    projectMenuItems= [
     {label : 'Epics' ,
-      srcIcon : "../../../../Icon.svg" ,
+      srcIcon : "assets/icons/epics.svg" ,
       route: '/MainLayout/Projects'
     } ,
      {label : 'Tasks' ,
-      srcIcon : "../../../../Icon.svg" ,
+      srcIcon : " assets/icons/tasks.svg"  ,
       route: '/MainLayout/ProjectsList'
     } ,
      {label : 'Members' ,
-      srcIcon : "../../../../Icon.svg" ,
+      srcIcon : " assets/icons/members.svg" ,
       route: '/MainLayout/Pro'
     } ,
      {label : 'Details' ,
-      srcIcon : "../../../../Icon.svg" ,
+      srcIcon : " assets/icons/details.svg" ,
       route: '/MainLayout/Pr'
     } ,
    ]

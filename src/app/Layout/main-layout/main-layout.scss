@@ -14,9 +14,8 @@ background: rgba(241, 243, 255, 1);
 // ---------------------------------------------
 // right wrapper
 .headerbar{
-//   width: 1024;
-// height: 64;
-justify-content: space-between;
+
+// justify-content: space-between;
 padding: 12px 24px ;
 
 border-bottom-width: 1px;
@@ -24,4 +23,17 @@ border-bottom-width: 1px;
 background: rgba(249, 249, 255, 1);
 
 border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+// ------------------------------------
+
+.burger-menu  span{
+
+font-size: 20px;
+leading-trim: NONE;
+line-height: 28px;
+letter-spacing: -0.5px;
+padding-right: 92.31px;
+
+
+
 }

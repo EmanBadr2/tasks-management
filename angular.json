@@ -25,12 +25,8 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                   "glob": "**/*",
-                     "input": "public"
-                // "glob": "src/assets",
-                  // "input": "src/assets"
-              }
+              "src/favicon.ico",
+                 "src/assets"
             ],
             "styles": ["src/styles.scss"]
           },
