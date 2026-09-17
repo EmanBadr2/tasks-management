@@ -9,10 +9,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class StorageService {
-
    access_token = localStorage.getItem('access_token')
    refresh_token = localStorage.getItem('refresh_token')
-
+    userId =localStorage.getItem('userId')
 
 
 }

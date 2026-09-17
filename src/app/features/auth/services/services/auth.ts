@@ -30,5 +30,8 @@ export class Auth {
     , { params:{ grant_type: 'password'}})
   }
 
+ logout():Observable< null | object>{
+ return this.httpClient.post('/auth/v1/logout' , null)
+ }
 
 }

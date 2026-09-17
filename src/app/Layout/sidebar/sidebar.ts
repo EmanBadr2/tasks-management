@@ -1,5 +1,6 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { Auth } from '../../features/auth/services/services/auth';
 
 @Component({
   imports: [RouterLink],
@@ -9,8 +10,8 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class Sidebar {
 
-
 private router = inject( Router)
+private authService = inject(Auth)
  menuMobileCase = input(false)
  footerMobileCase = input(false)
 activeLink = this.router.url
@@ -54,7 +55,19 @@ activeLink = this.router.url
    }
    
    logout(){
-    console.log('logout');
+    this.authService.logout().subscribe({
+      next: () =>{
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        localStorage.removeItem('userId') ;
+        this.router.navigate(['/auth/login']);
+
+        console.log('logout');
+        
+      }
+    })
+   console.log('errror');
+   
     
    }
 
