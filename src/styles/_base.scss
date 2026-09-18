@@ -9,6 +9,12 @@ vertical-align: middle;
 .text-color {
   color: var(--color-text );
 }
+.text-Primary{
+  color: var(--Primary);
+}
+.text-C-secondary{
+  color: var(--color-text-secondary);
+}
 
 
 .text-bold {
@@ -25,4 +31,9 @@ font-weight: 500;
 font-style: Medium;
 font-size: 14px;
 line-height: 20px;
+}
+
+.text-regular{
+  font-weight: 400;
+font-style: Regular;
 }

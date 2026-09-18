@@ -1,0 +1,112 @@
+// ..{
+
+// justify-content: space-between;
+// top: 32px;
+// left: 32px;
+
+// }
+
+
+.header-text{
+font-size: 12px;
+line-height: 16px;
+letter-spacing: 1.2px;
+vertical-align: middle;
+text-transform: uppercase;
+}
+
+.notActive-breadcrumb{
+  color: rgba(67, 70, 84, 0.6);
+}
+
+.page-title{
+
+font-size: 36px;
+line-height: 40px;
+letter-spacing: -0.9px;
+vertical-align: middle;
+}
+// ---------------------------
+.card{
+
+
+// padding: 4px;
+// border-radius: 8px;
+// top: 136px;
+// left: 32px;
+
+}
+.card-container{
+  width: 672px;
+max-width: 672px;
+box-shadow: 0px 1px 2px 0px #0000000D;
+
+// height: 696px;
+
+}
+// .header-section{
+
+// // border-bottom-width: 1px;
+// border-bottom: 1px solid #F1F3FF
+// }
+
+.header-section h3{
+ font-size: 24px;
+line-height: 32px;
+letter-spacing: 0px;
+}
+
+.header-section p , .action-section button{
+  font-size: 14px;
+line-height: 20px;
+letter-spacing: 0px;
+//  align-middle text-C-secondary
+}
+
+// ------------------------
+// form
+label{
+
+font-size: 11px;
+line-height: 16.5px;
+letter-spacing: 0.55px;
+
+}
+
+span{
+font-size: 11px;
+line-height: 100%;
+letter-spacing: 0px;
+
+
+
+
+
+
+}
+input , textarea {
+  background: #D7E2FF;
+  border: 2px solid #0052cc ;
+  &::placeholder {
+  font-family: Inter;
+font-weight: 400;
+font-style: Regular;
+font-size: 16px;
+
+line-height: 24px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: #4F5F7B80;
+
+  //  placeholder:text-color placeholder:text-regular  placeholder:text-base placeholder:leading-6
+  }
+
+
+}
+.main-btn{
+background: linear-gradient(135deg, #003D9B 0%, #0052CC 100%);
+box-shadow: 0px 4px 6px -4px #003D9B33;
+box-shadow: 0px 10px 15px -3px #003D9B33;
+color:  rgba(255, 255, 255, 1);
+
+}
