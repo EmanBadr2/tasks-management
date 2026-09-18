@@ -2,6 +2,8 @@ import { Component, inject, signal,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddProjectModel } from '../../models/projects';
 import { form, maxLength, minLength, required, FormField } from '@angular/forms/signals';
+import { ProjectsServiceService } from '../../services/projects-service.service';
+import { finalize } from 'rxjs';
 
 @Component({
   imports: [FormField],
@@ -11,7 +13,8 @@ import { form, maxLength, minLength, required, FormField } from '@angular/forms/
 })
 export class AddEditProjects {
   router= inject(Router)
-  
+  ProjectsService = inject(ProjectsServiceService)
+  isCreating = signal(false)
 
   projectModel = signal<AddProjectModel>({
       name: '',
@@ -28,18 +31,39 @@ export class AddEditProjects {
   goTo(){
     this.router.navigate(['/MainLayout/Projects'])
   }
-  addProject(event:Event){
+
+
+  createProject(event:Event){
     event.preventDefault( );
-    
-    console.log(this.addProjectForm.name().errors());
-    console.log(this.addProjectForm().valid());
-    console.log(this.addProjectForm().value());
+    if(this.addProjectForm().invalid() || this.isCreating()){
+      return ;
+    }
 
-    console.log(this.projectModel());
+    this.isCreating.set(true)
+
+    this.ProjectsService.createProject(this.projectModel()).pipe(
+      finalize ( ()=> { this.isCreating.set(false)})
+    ).subscribe({
+      next :(res)=> {
+
+        console.log('done' , res);
+        this.projectModel.set(
+          {  name: '',description: ''}
+        )
+        this.addProjectForm().reset()
+      },
+      error:(err)=> {
+        console.log(err);
+
+
+      },
+    })
 
 
 
-    
+
+
+
   }
 
 
