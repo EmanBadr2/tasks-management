@@ -17,6 +17,7 @@ private authService = inject(Auth)
 activeLink = this.router.url
    isCollapsed = signal(false)
    isMenuOpen = signal(true)
+   isActiveProject = signal(false)
    projectMenuItems= [
     {label : 'Epics' ,
       srcIcon : "assets/icons/epics.svg" ,
@@ -37,23 +38,23 @@ activeLink = this.router.url
    ]
 
    isActive(route:null| string):boolean{
-    this.activeLink=this.router.url 
+    this.activeLink=this.router.url
     if(this.activeLink === route){
         return true
     }
-   
+
     return false
-    
+
    }
 
    toggleProjectMenu(){
   this.isMenuOpen.update( value => !value)
    }
-   
+
   toggleCollapse(){
     this.isCollapsed.update( value => !value)
    }
-   
+
    logout(){
     this.authService.logout().subscribe({
       next: () =>{
@@ -63,13 +64,13 @@ activeLink = this.router.url
         this.router.navigate(['/auth/login']);
 
         console.log('logout');
-        
+
       }
     })
    console.log('errror');
-   
-    
+
+
    }
 
-   
+
 }

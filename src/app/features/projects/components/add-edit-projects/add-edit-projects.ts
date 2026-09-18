@@ -15,6 +15,7 @@ export class AddEditProjects {
   router= inject(Router)
   ProjectsService = inject(ProjectsServiceService)
   isCreating = signal(false)
+  hasServerErr= signal(false)
 
   projectModel = signal<AddProjectModel>({
       name: '',
@@ -51,10 +52,12 @@ export class AddEditProjects {
           {  name: '',description: ''}
         )
         this.addProjectForm().reset()
+         this.hasServerErr.set(false)
       },
       error:(err)=> {
         console.log(err);
-
+        this.hasServerErr.set(true)
+          this.addProjectForm().reset()
 
       },
     })

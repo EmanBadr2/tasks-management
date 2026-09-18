@@ -37,8 +37,8 @@ vertical-align: middle;
 
 }
 .card-container{
-  width: 672px;
-max-width: 672px;
+//   width: 672px;
+// max-width: 672px;
 box-shadow: 0px 1px 2px 0px #0000000D;
 
 // height: 696px;
@@ -86,7 +86,7 @@ letter-spacing: 0px;
 }
 input , textarea {
   background: #D7E2FF;
-  border: 2px solid #0052cc ;
+  // border: 2px solid #0052cc ;
   &::placeholder {
   font-family: Inter;
 font-weight: 400;
@@ -98,6 +98,10 @@ letter-spacing: 0px;
 vertical-align: middle;
 color: #4F5F7B80;
 
+   &:focus {
+    border-color: #003D9B;
+    box-shadow: none;
+  }
   //  placeholder:text-color placeholder:text-regular  placeholder:text-base placeholder:leading-6
   }
 
