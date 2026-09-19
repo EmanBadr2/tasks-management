@@ -1,7 +1,56 @@
-<p>projects works!</p>
 
-<button >
-  <a routerLink="/MainLayout/AddEditProjects"> Add new Project</a>
-</button>
-<p>lll</p>
-<button  (click)="getAllProject()">test p list  </button>
+<div class=" flex flex-col gap-10 p-8 relative">
+  <!-- header -->
+  <div class="header-section  flex justify-between items-end pr-0  ">
+    <div class=" flex flex-col gap-1">
+      <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
+      <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
+    </div>
+<div class=" hidden md:flex">
+    <a routerLink="/MainLayout/AddEditProjects" >
+      <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
+      <span class=" text-white text-medium text-base align-middle">Add new Project </span>
+    </button>
+      </a>
+</div>
+
+
+
+  </div>
+  <!-- state -->
+   @if(projectList().length > 0){
+    <app-projects-list [projectList]="projectList()" ></app-projects-list>
+<!-- + btn -->
+     <div class="fixed-btn-div absolute right-0 bottom-0 m-1 md:hidden ">
+     <a routerLink="/MainLayout/AddEditProjects"
+     class="fixed-btn text-white  flex items-center justify-center  ">
+     <button> <img src="../../../../../assets/icons/addd.svg" alt=""> </button>
+     </a>
+   </div>
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
