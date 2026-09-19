@@ -1,7 +1,11 @@
 
+
+  <!-- state project list  -->
+   @if(projectList().length > 0){
 <div class=" flex flex-col gap-10 p-8 relative">
   <!-- header -->
-  <div class="header-section  flex justify-between items-end pr-0  ">
+  <div class="header-section  flex justify-between items-end pr-0  "
+  [class.hidden]="isEmptyState()">
     <div class=" flex flex-col gap-1">
       <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
       <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
@@ -17,10 +21,9 @@
 
 
   </div>
-  <!-- state -->
-   @if(projectList().length > 0){
+
     <app-projects-list [projectList]="projectList()" ></app-projects-list>
-<!-- + btn -->
+        <!-- + btn -->
      <div class="fixed-btn-div absolute right-0 bottom-0 m-1 md:hidden ">
      <a routerLink="/MainLayout/AddEditProjects"
      class="fixed-btn text-white  flex items-center justify-center  ">
@@ -28,22 +31,36 @@
      </a>
    </div>
 
+</div>
    }
 
 
 
 
-
-
-
-
-
-
-
+<!-- Empty State -->
+ @if(projectList().length === 0){
+  <div class="  flex  items-center justify-center px-6 pt-10 w-[90%]">
+    <div class=" flex flex-col items-center justify-center gap-2 text-center gap-11  ">
+      <div class=""> <img src="../../../../../assets/icons/empty.svg" width="230px"  alt=""></div>
+    <div class="emtpy-s-mess flex flex-col gap-4 ">
+      <h3 class=" text-semibold text-[36px] text-[#041B3C] align-middle">No Projects</h3>
+      <p class=" text-regular text-[18px] align-middle w-[448px] text-[#434654]"> You don’t have any projects yet. Start by defining
+your first architectural workspace to begin tracking
+tasks and epics.</p>
+    </div>
+    <div class=" ">
+    <a routerLink="/MainLayout/AddEditProjects" >
+      <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
+      <span class=" text-white text-medium text-base align-middle">Add new Project </span>
+    </button>
+      </a>
 </div>
+ </div>
+  </div>
 
 
 
+  }
 
 
 

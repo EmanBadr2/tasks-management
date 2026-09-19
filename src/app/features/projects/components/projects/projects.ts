@@ -14,6 +14,7 @@ import { ProjectsList } from '../projects-list/projects-list';
 export class Projects {
   constructor(){
     this.getAllProject()
+  
   }
 private router= inject(Router)
 ProjectsService = inject(ProjectsServiceService)
@@ -33,7 +34,15 @@ getAllProject(){
       console.log(err);
     }
   })
+
 }
 
+checkState(){
+  if(this.projectList().length === 0 ){
+    this.isEmptyState.set(true)
+    console.log(this.isEmptyState());
+
+  }
+}
 
 }
