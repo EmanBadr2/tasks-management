@@ -1,0 +1,27 @@
+ <div class="loading px-8 pt-6  pb-8 h-full md:h-[85vh]  cursor-wait ">
+
+ <div class=" flex flex-col gap-4 w-11/12 m-auto  ">
+  <!-- header -->
+  <div class="flex justify-between items-center ">
+     <div class=" flex flex-col gap-1">
+      <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
+      <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
+    </div>
+    <div class="rounded item-bg py-2 px-4 h-10 w-1/4 animate-pulse opacity-60 hidden md:flex"></div>
+
+  </div>
+<!-- loading card -->
+<div class="   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 opacity-40  ">
+  @for (item of [1,2,3,4,5,6]; track item) {
+      <div class=" loading-card animate-pulse
+      flex flex-col gap-4
+       rounded-xl p-6
+        bg-white shadow-sm">
+        <div class=" h-32 w-full rounded item-bg"></div>
+        <div class=" h-6 w-3/4 rounded item-bg"></div>
+        <div class=" h-4 w-1/2 rounded item-bg"></div>
+</div>
+  }
+ </div>
+ </div>
+ </div>

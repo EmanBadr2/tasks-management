@@ -1,98 +1,24 @@
 
 
-  <!-- state project list  -->
-   @if(projectState() === 'success'){
-<div class=" flex flex-col gap-10 p-8 relative">
-  <!-- header -->
-  <div class="header-section  flex justify-between items-end pr-0  "
-  [class.hidden]="" >
-    <div class=" flex flex-col gap-1">
-      <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
-      <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
-    </div>
-<div class=" hidden md:flex">
-    <a routerLink="/MainLayout/AddEditProjects" >
-      <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
-      <span class=" text-white text-medium text-base align-middle">Add new Project </span>
-    </button>
-      </a>
-</div>
-
-
-
-  </div>
-
-    <app-projects-list [projectList]="projectList()" ></app-projects-list>
-        <!-- + btn -->
-     <div class="fixed-btn-div absolute right-0 bottom-0 m-1 md:hidden ">
-     <a routerLink="/MainLayout/AddEditProjects"
-     class="fixed-btn text-white  flex items-center justify-center  ">
-     <button> <img src="../../../../../assets/icons/addd.svg" alt=""> </button>
-     </a>
-   </div>
-
-</div>
-   }
-
-
+<!--  project list  -->
+ @if(projectState() === 'success'){
+   <app-projects-list [projectList]="projectList()" ></app-projects-list>
+ }
 
 
 <!-- Empty State -->
  @if(projectState() === 'empty' ){
-  <div class="  flex  items-center justify-center px-6 pt-10 w-[90%]">
-    <div class=" flex flex-col items-center justify-center gap-2 text-center gap-11  ">
-      <div class=""> <img src="../../../../../assets/icons/empty.svg" width="230px"  alt=""></div>
-    <div class="emtpy-s-mess flex flex-col gap-4 ">
-      <h3 class=" text-semibold text-[36px] text-[#041B3C] align-middle">No Projects</h3>
-      <p class=" text-regular text-[18px] align-middle w-[448px] text-[#434654]"> You don’t have any projects yet. Start by defining
-your first architectural workspace to begin tracking
-tasks and epics.</p>
-    </div>
-    <div class=" ">
-    <a routerLink="/MainLayout/AddEditProjects" >
-      <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
-      <span class=" text-white text-medium text-base align-middle">Add new Project </span>
-    </button>
-      </a>
-</div>
- </div>
-  </div>
-
-
+<app-empty-state></app-empty-state>
 
   }
-
-
-
 
 <!-- loading state -->
  @if(projectState() === 'loading'){
 
- <div class="loading px-8 pt-6  pb-8 h-full md:h-[85vh]  cursor-wait ">
+ <app-loading-state></app-loading-state>
 
- <div class=" flex flex-col gap-4 w-11/12 m-auto  ">
-  <!-- header -->
-  <div class="flex justify-between items-center ">
-     <div class=" flex flex-col gap-1">
-      <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
-      <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
-    </div>
-    <div class="rounded item-bg py-2 px-4 h-10 w-1/4 animate-pulse opacity-60 hidden md:flex"></div>
-
-  </div>
-<!-- loading card -->
-<div class="   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 opacity-40  ">
-  @for (item of [1,2,3,4,5,6]; track item) {
-      <div class=" loading-card animate-pulse
-      flex flex-col gap-4
-       rounded-xl p-6
-        bg-white shadow-sm">
-        <div class=" h-32 w-full rounded item-bg"></div>
-        <div class=" h-6 w-3/4 rounded item-bg"></div>
-        <div class=" h-4 w-1/2 rounded item-bg"></div>
-</div>
-  }
- </div>
- </div>
- </div>
  }
+
+  @if(projectState() === 'error'){
+   <app-error-state></app-error-state>
+  }
