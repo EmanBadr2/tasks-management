@@ -1,9 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal ,OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ProjectsServiceService } from '../../services/projects-service.service';
 import { ProjectListDetails } from '../../models/projects';
 import { ProjectsList } from '../projects-list/projects-list';
 
+type State = 'loading' | 'empty' | 'error' | 'success' ;
 
 @Component({
   imports: [RouterLink, ProjectsList],
@@ -11,38 +12,44 @@ import { ProjectsList } from '../projects-list/projects-list';
   styleUrl: './projects.scss',
   templateUrl: './projects.html',
 })
-export class Projects {
-  constructor(){
-    this.getAllProject()
-  
+export class Projects  implements OnInit {
+
+  ngOnInit(){
+      this.getAllProject()
+      // this.projectState.set('empty')
+
   }
+
 private router= inject(Router)
 ProjectsService = inject(ProjectsServiceService)
 projectList = signal<ProjectListDetails[]>([])
 
-isEmptyState = signal(false)
-isLoadingState = signal(false)
-isErrorState = signal(false)
+
+
+projectState=signal<State>('loading')
 
 getAllProject(){
+   this.projectState.set('loading')
   this.ProjectsService.getAllProjects().subscribe({
     next :(res)=>{
       this.projectList.set(res);
-       console.log(this.projectList());
+        this.projectState.set(  this.projectList().length === 0 ? 'empty'  :'success' )
+
+
     } ,
      error :(err)=>{
       console.log(err);
-    }
+   
+        this.projectState.set('error')
+  }
+
   })
 
+
+
 }
 
-checkState(){
-  if(this.projectList().length === 0 ){
-    this.isEmptyState.set(true)
-    console.log(this.isEmptyState());
 
-  }
-}
+
 
 }

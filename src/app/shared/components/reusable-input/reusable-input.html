@@ -1,6 +1,6 @@
 
 
-<!-- 
+<!--
 @if (field().touched() && field().errors()) {
 @for (error of field().errors(); track error.kind) {
 <p class="label-text-alt text-error block border-1">  {{ error.message }}</p>
@@ -41,11 +41,12 @@
   >
   @if(passwordVisible()){
     <!-- invisible icon -->
-       <span>  invisable </span>
+       <img src="../../../../assets/icons/Icon.svg" alt="">
   }
   @else {
     <!-- visible Icon -->
- <span> visible</span>
+ <!-- <span> visible</span> -->
+  <img src="../../../../assets/icons/Icon.svg" alt="">
   }
 
   <!-- <img src="../../../../assets/icons/Icon.svg"class="" alt="x" > -->

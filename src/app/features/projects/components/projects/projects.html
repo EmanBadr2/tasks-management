@@ -1,11 +1,11 @@
 
 
   <!-- state project list  -->
-   @if(projectList().length > 0){
+   @if(projectState() === 'success'){
 <div class=" flex flex-col gap-10 p-8 relative">
   <!-- header -->
   <div class="header-section  flex justify-between items-end pr-0  "
-  [class.hidden]="isEmptyState()">
+  [class.hidden]="" >
     <div class=" flex flex-col gap-1">
       <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
       <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
@@ -38,7 +38,7 @@
 
 
 <!-- Empty State -->
- @if(projectList().length === 0){
+ @if(projectState() === 'empty' ){
   <div class="  flex  items-center justify-center px-6 pt-10 w-[90%]">
     <div class=" flex flex-col items-center justify-center gap-2 text-center gap-11  ">
       <div class=""> <img src="../../../../../assets/icons/empty.svg" width="230px"  alt=""></div>
@@ -65,9 +65,34 @@ tasks and epics.</p>
 
 
 
+<!-- loading state -->
+ @if(projectState() === 'loading'){
 
+ <div class="loading px-8 pt-6  pb-8 h-full md:h-[85vh]  cursor-wait ">
 
+ <div class=" flex flex-col gap-4 w-11/12 m-auto  ">
+  <!-- header -->
+  <div class="flex justify-between items-center ">
+     <div class=" flex flex-col gap-1">
+      <h2 class=" text-semibold text-color text-[30px] leading-[36px] align-middle">Projects </h2>
+      <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
+    </div>
+    <div class="rounded item-bg py-2 px-4 h-10 w-1/4 animate-pulse opacity-60 hidden md:flex"></div>
 
-
-
-
+  </div>
+<!-- loading card -->
+<div class="   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 opacity-40  ">
+  @for (item of [1,2,3,4,5,6]; track item) {
+      <div class=" loading-card animate-pulse
+      flex flex-col gap-4
+       rounded-xl p-6
+        bg-white shadow-sm">
+        <div class=" h-32 w-full rounded item-bg"></div>
+        <div class=" h-6 w-3/4 rounded item-bg"></div>
+        <div class=" h-4 w-1/2 rounded item-bg"></div>
+</div>
+  }
+ </div>
+ </div>
+ </div>
+ }
