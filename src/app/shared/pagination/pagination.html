@@ -1,0 +1,47 @@
+
+<div class="flex items-center  gap-2">
+  
+   <button
+   type="button"
+     class=" flex items-center justify-center btn cursor-pointer 
+     disabled:opacity-60 disabled:cursor-not-allowed  "
+     (click)="previousPage()"
+     [disabled]="currentPage() === 1"
+   >
+     <img src="../../../assets/icons/prev.svg" alt="">
+   </button>
+
+
+     @for( page of pages() ; track page){
+
+       <button
+   type="button"
+     class="btn cursor-pointer  "
+     (click)="pageChange.emit(page)"
+      [class.active]="currentPage() === page"
+   
+    
+   >
+   {{page}}
+   </button>
+
+
+      @if (page === 3 && totalPages() > 4) {
+      <span>...</span>
+    }
+
+}
+  
+
+      <button
+   type="button"
+     class=" flex items-center justify-center btn cursor-pointer 
+     disabled:opacity-60 disabled:cursor-not-allowed "
+     (click)="nextPage()"
+     [disabled]="currentPage() === totalPages()"
+   >
+     <img src="../../../assets/icons/next.svg" width="5px" alt="next" >
+      
+   </button>
+
+</div> 
