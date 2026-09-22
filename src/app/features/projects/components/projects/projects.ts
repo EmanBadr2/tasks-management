@@ -1,5 +1,5 @@
 import { Component, inject, signal ,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProjectsServiceService } from '../../services/projects-service.service';
 import { ProjectListDetails } from '../../models/projects';
 import { ProjectsList } from '../projects-list/projects-list';
@@ -10,7 +10,7 @@ import { EmptyState } from '../../../../shared/components/empty-state/empty-stat
 type State = 'loading' | 'empty' | 'error' | 'success' ;
 
 @Component({
-  imports: [ ProjectsList, ErrorState, LoadingState, EmptyState],
+  imports: [ ProjectsList, ErrorState, LoadingState, EmptyState ,RouterLink ],
   selector: 'app-projects',
   styleUrl: './projects.scss',
   templateUrl: './projects.html',
@@ -37,7 +37,7 @@ getAllProject(){
      error :(err)=>{
       console.log(err);
         this.projectState.set('error')
-        // this.router.navigate(['/MainLayout/error'])
+        this.router.navigate(['/MainLayout/error'])
   }
 
   })

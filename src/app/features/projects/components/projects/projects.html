@@ -1,4 +1,5 @@
 
+<!-- <a routerLink='AddEditProjects' > test</a> -->
 
 <!--  project list  -->
  @if(projectState() === 'success'){
@@ -9,17 +10,12 @@
 <!-- Empty State -->
  @if(projectState() === 'empty' ){
 <app-empty-state></app-empty-state>
-
   }
-
 <!-- loading state -->
  @if(projectState() === 'loading'){
-
  <app-loading-state></app-loading-state>
-
  }
  <!-- error state -->
-
   @if(projectState() === 'error'){
    <app-error-state></app-error-state>
   }

@@ -4,79 +4,40 @@ import { ErrorState } from '../shared/components/error-state/error-state';
 import { LoadingState } from '../shared/components/loading-state/loading-state';
 import { EmptyState } from '../shared/components/empty-state/empty-state';
 
-
-
-
 export const LayoutRoutes: Routes = [
-//     {
-//       path: '',
-//       component: MainLayout ,
-//       canActivate : [authGuard],
-//       children : [
-//         {
-//           path:'' ,
-//           redirectTo : 'Projects' ,
-//           pathMatch : 'full'
-//         },
-//          { path : 'Projects' , loadComponent : () =>
-//       import('../features/projects/components/projects/projects').then(
-//         m => m.Projects
-//       ), } ,
-//   {
-//         path: 'ProjectsList' ,
-//         loadComponent : ()=>
-//           import('../features/projects/components/projects-list/projects-list').then(
-//             m=>m.ProjectsList
-//            ),
-//       } ,
-//        {
-//         path: 'AddEditProjects' ,
-//         loadComponent : ()=>
-//           import('../features/projects/components/add-edit-projects/add-edit-projects').then(
-//             m=>m.AddEditProjects
-//            ),
-//       } ,
-
-
-
-//       ]
-
-
-
-// }
-
-{
+  {
     path: '',
-    component: MainLayout ,
-    children :[
-       {  path: '' ,
-      loadChildren : ()=> import('../features/projects/projects.routing').then(
-    m => m.ProjectsRoute
-  )
- 
-} ,
+    component: MainLayout,
 
-{
-  path : 'error' ,
-  component: ErrorState
-} ,
-{
-  path : 'loading' ,
-  component: LoadingState
+    children: [
+      {
+        path: '',
+        redirectTo: 'Projects',
+        pathMatch: 'full',
+      },
+      {
+        path: 'Projects',
+        loadComponent: () =>
+          import('../features/projects/components/projects/projects').then((m) => m.Projects),
+      },
+ {
+    path: 'error',
+    component: ErrorState,
+  },
+  {
+    path: 'loading',
+    component: LoadingState,
+  },
+  {
+    path: 'empty',
+    component: EmptyState,
+  },
 
-} ,
-{
-  path : 'empty' ,
-  component: EmptyState
-
-} ,
-
-
-
-    ]
-},
-
+    ],
 
 
 
-]
+  },
+
+
+];

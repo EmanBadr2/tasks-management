@@ -1,6 +1,7 @@
 
 
 <div class=" flex flex-col gap-10 p-8 relative">
+  <!-- header -->
  <div class="header-section  flex justify-between items-end pr-0  "
   [class.hidden]="" >
     <div class=" flex flex-col gap-1">
@@ -8,7 +9,7 @@
       <span class=" text-regular text-[#434654] text-base leading-6"> Manage and curate your projects</span>
     </div>
 <div class=" hidden md:flex">
-    <a routerLink="/MainLayout/AddEditProjects" >
+    <a routerLink="AddEditProjects" >
       <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
       <span class=" text-white text-medium text-base align-middle">Add new Project </span>
     </button>
@@ -18,11 +19,13 @@
 
 
   </div>
-
+<!-- card -->
 <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-@for (project of paginatedProjects (); track project.id ;  let i = $index) {
+@for (project of paginatedProjects(); track project.id ;  let i = $index) {
 
-  <div class=" card flex flex-col gap-4 p-6 rounded-lg bg-white ">
+  <div class=" card flex flex-col gap-4 p-6 rounded-lg bg-white "
+  >
+  <button (click)="selectProject(project)">select</button>
     <!-- title & des.. -->
     <div class="item flex flex-col gap-2">
       <h3 class="text-medium text-color text-[18px] leading[24px]">{{project.name}} </h3>
@@ -43,25 +46,72 @@
     <span class=" text-bold text-base   text-[#737685] uppercase"> CREATED AT</span>
     <span class=" text-medium text-[14px]  text-[#434654] "> {{project.created_at |date:'dd/MM/yyyy' }}</span>
     </div>
+
   </div>
-    @if  (i === projectList().length - 1) {
+
+
+ @if  (i === paginatedProjects().length - 1) {
      <div class=" card hidden md:flex  justify-center items-center h-[220px]
       p-6 rounded-lg bg-white border-2 border-dashed border-[#C3C6D633] ">
       <div class=" gap-4">
         <div class=" flex flex-col gap-4">
-           <a routerLink="/MainLayout/AddEditProjects"
+           <a routerLink="AddEditProjects"
             class="m-auto"> <img src="../../../../../assets/icons/addP.svg"
              width="48px" alt=""> </a>
            <span class=" m-auto text-bold uppercase text-[14px] align-text text-[#434654]">ADD PROJECT</span>
         </div>
-
       </div>
+   </div>
+   }
 
 
+}
+
+
+
+</div>
+
+
+
+
+
+
+        <!-- + btn mobile -->
+     <div class="fixed-btn-div absolute right-0 bottom-0 m-1 md:hidden ">
+     <a routerLink="/MainLayout/AddEditProjects"
+     class="fixed-btn text-white  flex items-center justify-center  ">
+     <button> <img src="../../../../../assets/icons/addd.svg" alt=""> </button>
+     </a>
    </div>
 
-   }
-}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- pagination -->
+<div class=" p-8 flex justify-end">
+<app-pagination
+
+ [currentPage]="currentPage()"
+  [pageSize]="pageSize()"
+  [totalItems]="projectList().length"
+  (pageChange)="changePage($event)"
+
+   />
+</div>
 
 
 
@@ -84,32 +134,3 @@
   }
    } -->
 
-
-
-
-</div>
-
-
-
-        <!-- + btn mobile -->
-     <div class="fixed-btn-div absolute right-0 bottom-0 m-1 md:hidden ">
-     <a routerLink="/MainLayout/AddEditProjects"
-     class="fixed-btn text-white  flex items-center justify-center  ">
-     <button> <img src="../../../../../assets/icons/addd.svg" alt=""> </button>
-     </a>
-   </div>
-
-</div>
-
-
-
-<div class=" p-8 flex justify-end">
-<app-pagination 
-
- [currentPage]="currentPage()"
-  [pageSize]="pageSize()"
-  [totalItems]="projectList().length"
-  (pageChange)="changePage($event)"
-
-   />
-</div>

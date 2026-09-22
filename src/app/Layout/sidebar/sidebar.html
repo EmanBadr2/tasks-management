@@ -19,10 +19,10 @@
 
      <nav class=" flex flex-col gap-1  text-semibold ">
       <a
-      routerLink="/MainLayout/Projects"
+      routerLink="Projects"
       routerLinkActive="active"
       class="flex gap-3 px-4 py-[10px] rounded-sm   items-center "
-       [class.active]="isActive('/MainLayout/Projects')"
+
        >
         <img src="../../../assets/icons/projects.svg" alt="x">
 
@@ -33,10 +33,12 @@
       </a>
         <a
 
-        routerLink="/MainLayout/ProjectsList"
+        routerLink="Projects/AddEditProjects"
+        routerLinkActive="active"
 
       class="flex gap-3 px-3 py-[10px]   "
-        [class.active]="isActive('/MainLayout/ProjectsList')"
+      routerLinkActive="active"
+
            [class.hidden]=" footerMobileCase()"
        >
             <img src="../../../assets/icons/statistics.svg" alt="x">
@@ -76,12 +78,12 @@
 
               <div class="project-menu
                   flex flex-col gap-1 p-2 rounded-b-[6px]   ">
-                  @for (item of projectMenuItems; track item.label) {
+                  @for (item of projectMenuLinks(); track item.label) {
                         <a
          class="item flex gap-3 px-4 py-[10px]  "
           [routerLink]="item.route"
+          routerLinkActive="active"
 
-           [class.active-project]="isActive(item.route)"
 
          >
            <img [src]="item.srcIcon" alt="x">
@@ -96,11 +98,11 @@
               <div class="project-popup flex flex-col gap-1
                p-2  rounded-r-lg
               ">
-                @for (item of projectMenuItems; track item.label) {
+                @for (item of projectMenuLinks(); track item.label) {
                     <a
          class="item flex gap-3 px-4 py-[10px]  md:w-[230px] "
           [routerLink]="item.route"
-           [class.active-project]="isActive(item.route)"
+              routerLinkActive="active"
          >
            <img [src]="item.srcIcon" alt="">
            <span class=" text-semibold "> {{item.label}}</span>
@@ -156,11 +158,11 @@ text-medium  align-text
    [class.justify-center]="!isActiveProject()">
    @if (isActiveProject()) {
 <div class="flex justify-between icon-text-mobile w-[30%]">
-      @for (item of projectMenuItems.slice(0, 2); track item.label) {
+      @for (item of projectMenuLinks().slice(0, 2); track item.label) {
                     <a
          class="item  px-2   "
           [routerLink]="item.route"
-          [class.mobile-active]="isActive(item.route)"
+             routerLinkActive="mobile-active"
          >
            <img [src]="item.srcIcon" width="20" alt="">
            <span class="  "> {{item.label}}</span>
@@ -171,7 +173,8 @@ text-medium  align-text
 <div class="">
   <a
       routerLink="/MainLayout/Projects"
-      [class.mobile-active]="isActive('/MainLayout/Projects')"
+     
+        routerLinkActive="mobile-active"
       class="text-semibold a-mobile "
 
        >
@@ -185,11 +188,11 @@ text-medium  align-text
 </div>
  @if (isActiveProject()) {
 <div class="flex justify-between  icon-text-mobile w-[30%]">
-      @for (item of projectMenuItems.slice( 2); track item.label) {
+      @for (item of projectMenuLinks().slice( 2); track item.label) {
                     <a
          class="item  px-2   "
           [routerLink]="item.route"
-          [class.mobile-active]="isActive(item.route)"
+           routerLinkActive="mobile-active"
          >
            <img [src]="item.srcIcon" width="20" alt="">
            <span class="  "> {{item.label}}</span>
@@ -201,6 +204,9 @@ text-medium  align-text
   </div>
 
 }
+
+
+
 
 </aside>
 
