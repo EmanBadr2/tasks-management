@@ -21,6 +21,10 @@ export const ProjectsRoute: Routes = [
     loadComponent: () =>
       import('./components/add-edit-projects/add-edit-projects').then((m) => m.AddEditProjects),
   },
+  {  path: ':id/edit',
+     loadComponent: () =>
+      import('./components/add-edit-projects/add-edit-projects').then((m) => m.AddEditProjects),
+   },
 
     {
         path: ':id/epics',

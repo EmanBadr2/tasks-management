@@ -60,7 +60,7 @@ activeLink = this.router.url
     } ,
      {label : 'Details' ,
       srcIcon : " assets/icons/details.svg" ,
-      route:  [ '/MainLayout/projects/', id,'details']
+      route:  [ '/MainLayout/projects/', id,'edit']
     } ,
    ]
    })

@@ -17,7 +17,13 @@ export class ProjectsServiceService {
         return this.httpClient.get< ProjectListDetails[] >(`/rest/v1/rpc/get_projects` )
  }
 
+ getProjectByID(id:string):Observable<ProjectListDetails[]>{
+   return this.httpClient.get<ProjectListDetails[]>(`/rest/v1/rpc/get_projects?id=eq.${id}`)
+ }
 
+ updateProject(projectId:string , data:AddProjectModel):Observable< object>{
+ return this.httpClient.patch(`/rest/v1/projects?id=eq.${projectId}` , data)
+ }
 
 
 }

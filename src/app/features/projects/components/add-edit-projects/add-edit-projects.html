@@ -1,22 +1,36 @@
 <div class="project-form-page px-8  pb-[165px] pt-2">
+
+  <!-- action Header -->
   <div class=" header-action hidden md:flex flex-col gap-4 ">
     <div class="nav flex gap-2">
+
     <a routerLink="/MainLayout/projects"
        class=" text-bold  header-text notActive-breadcrumb " >
         PROJECTS </a>
-
       <img src="../../../../../assets/icons/headerp.svg"
       width=" 3.700000047683716"
      height="6"
       alt="">
-
+       @if(isEditMode()){
+         <a routerLink=""
+       class=" text-bold  header-text notActive-breadcrumb " >
+        PROJECT TITLE </a>
+      <img src="../../../../../assets/icons/headerp.svg" height="6" alt="">
+       }
 
       <a
        class=" text-bold header-text text-Primary "
-      > ADD NEW PROJECT</a>
+      >
+         @if(isEditMode()){ EDIT } @else{  ADD NEW PROJECT }
+
+    </a>
     </div>
+    <!-- title -->
     <div class="page-title ">
-      <h2 class=" text-semibold text-color "> Add New Project</h2>
+      <h2 class=" text-semibold text-color ">
+          @if(isEditMode()){ Edit Project } @else{ Add New Project }
+
+      </h2>
     </div>
   </div>
 
@@ -27,7 +41,14 @@
         <div class="flex gap-4 items-center ">
           <img src="../../../../../assets/icons/Overlayaddp.svg" alt="">
           <div>
-            <h3 class=" text-semibold text-color align-middle">Initialize New Project</h3>
+            <h3 class=" text-semibold text-color align-middle">
+              @if(isEditMode()){
+                Edit Project
+              } @else{
+                 Initialize New Project
+              }
+
+            </h3>
             <p class=" text-regular align-middle text-C-secondary "
             >Define the scope and foundational details of your project.</p>
           </div>
@@ -39,13 +60,13 @@
     <div class="name-field flex flex-col gap-2 ">
       <label class=" text-bold align-middle uppercase" for=""> PROJECT TITLE
         <!-- only in error -->
-             @if(addProjectForm.name().touched() && addProjectForm.name().errors()){
+             @if(ProjectForm.name().touched() && ProjectForm.name().errors()){
                 <span class=" text-bold align-middle uppercase text-[#BA1A1A]">* </span>
              }
 
        </label>
       <input
-      [formField]="addProjectForm.name"
+      [formField]="ProjectForm.name"
        type="text"
        placeholder="pr"
        class=" py-3 px-4 rounded-sm focus:outline-none
@@ -54,8 +75,8 @@
        <!-- only in err -->
        <div class=" flex items-center gap-[6px] ">
 
-        @if(addProjectForm.name().touched() && addProjectForm.name().errors()){
-          @for(err of addProjectForm.name().errors() ; track err){
+        @if(ProjectForm.name().touched() && ProjectForm.name().errors()){
+          @for(err of ProjectForm.name().errors() ; track err){
                    <img src="../../../../../assets/icons/errIcon.svg" alt="">
            <span
         class=" text-medium text-xs align-middle leading-[16px] text-[#BA1A1A]
@@ -81,7 +102,7 @@
             text-[11px] leading-[16.5px] tracking-normal ">Optional</span>
       </div>
       <textarea
-        [formField]="addProjectForm.description"
+        [formField]="ProjectForm.description"
        class=" pt-3 pb-[84px] px-4 rounded-sm  focus:outline-none  "
       id=""
       placeholder=" Provide a high-level overview of the project's architectural objectives and key milestones..."
@@ -102,34 +123,39 @@
     <button class=" py-3 px-6  rounded-sm cursor-pointer
     text-bold align-middle text-C-secondary "
     type="button"
-   
+
     >   <a routerLink="/MainLayout/projects">  Back </a> </button>
    <button
     class=" py-3 px-8 gap-2  rounded-sm cursor-pointer main-btn
     text-bold align-middle text-C-secondary
     disabled:cursor-not-allowed disabled:opacity-70"
-    (click)="createProject($event)"
+    (click)="submit($event)"
     type="submit"
-    [disabled]="addProjectForm().invalid() || isCreating()"
+    [disabled]=" ProjectForm().invalid() || isLoading()  || (isEditMode()&& !ProjectForm().dirty()) "
     >
-    @if(isCreating()){
-      Creating...
+    @if(isLoading()){
+        @if(isEditMode()){ Updating... }@else{ creating... }
+    }@else{
+       @if(isEditMode()){ Save Changes  } @else{ Create Project }
     }
-    @else{
-      Create Project
-    }
+
     </button>
    </div>
 
    @if (hasServerErr()) {
        <div class="error-mess m-auto ">
     <span class="  text-medium text-xs align-middle leading-[16px] text-[#BA1A1A]
-    ">Failed To Add New Project, Try Again Later </span>
+    ">
+    Failed To
+    @if(isEditMode()){ Update }@else{ Add New }
+      Project, Try Again Later
+  </span>
    </div>
    }
 
 
   </div>
+
 
   <!-- footer -->
    <div class="footer-section flex gap-3 flex-col md:flex-row   md:items-center md:gap-0
@@ -149,7 +175,6 @@
     </div>
 
   </div>
-
 
 
 
