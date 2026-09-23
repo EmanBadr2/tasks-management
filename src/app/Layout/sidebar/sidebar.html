@@ -1,212 +1,149 @@
-<aside class="  flex flex-col justify-between  h-full "
-
- >
-
-
+<aside class="flex flex-col justify-between h-full">
   <!-- header -->
   <div
-  class="sidebar-header flex px-4 gap-2 pb-8  items-center text-bold "
-    [class.hidden]="menuMobileCase() || footerMobileCase()" >
-        <img src="../../../assets/icons/headerIcon.svg" alt="x">
-    <span class=" "
-    [class.hidden]="isCollapsed() "
-    > TASKLY </span>
-    </div>
-
-    <!-- main Navigate -->
-   <div class="saidbar-nav gap-1  flex-grow  "
-    [class.hidden]=" footerMobileCase()" >
-
-     <nav class=" flex flex-col gap-1  text-semibold ">
-      <a
-      routerLink="Projects"
-      routerLinkActive="active"
-      class="flex gap-3 px-4 py-[10px] rounded-sm   items-center "
-
-       >
-        <img src="../../../assets/icons/projects.svg" alt="x">
-
-
-          <span
-          class="  md:w-[150px]  "
-           [class.hidden]="isCollapsed()" > Project </span>
-      </a>
-        <a
-
-        routerLink="Projects/AddEditProjects"
-        routerLinkActive="active"
-
-      class="flex gap-3 px-3 py-[10px]   "
-      routerLinkActive="active"
-
-           [class.hidden]=" footerMobileCase()"
-       >
-            <img src="../../../assets/icons/statistics.svg" alt="x">
-
-          <span
-          class="  md:w-[150px] "
-           [class.hidden]="isCollapsed()" > Statistics </span>
-      </a>
-
-       <!--Active project -->
-       <div class="active-projects flex flex-col gap-2.5  pt-3   ">
-        <div class=" pt-4 border-t border-black/10 relative"
-           [class.hidden]=" footerMobileCase() || !isActiveProject ()"
-        >
-
-            <button
-            (click)="toggleProjectMenu()"
-            class=" flex gap-3 p-3
-             rounded-t-[6px] bg-[#D7E2FF]
-             w-full cursor-pointer   "
-            >
-              <img src="../../../assets/icons/folder.svg" alt="x">
-
-              <span
-               class=" text-semibold "
-                [class.hidden]="isCollapsed()"
-               >Active Project Na...</span>
-            <!-- <img src="../../../../SVG.png" alt="x"> -->
-             <span  [class.hidden]="isCollapsed()">
-               <img src="../../../assets/icons/vector.svg" alt="x">
-
-            </span>
-            </button>
-
-            <!-- open in sidebar -->
-            @if(!isCollapsed() && isMenuOpen() ){
-
-              <div class="project-menu
-                  flex flex-col gap-1 p-2 rounded-b-[6px]   ">
-                  @for (item of projectMenuLinks(); track item.label) {
-                        <a
-         class="item flex gap-3 px-4 py-[10px]  "
-          [routerLink]="item.route"
-          routerLinkActive="active"
-
-
-         >
-           <img [src]="item.srcIcon" alt="x">
-         <span class=" text-semibold "> {{item.label}}</span>
-         </a>
-                  }
-
-              </div>
-            }
-            <!-- popup out sidebar -->
-             @if(isCollapsed() && isMenuOpen() ){
-              <div class="project-popup flex flex-col gap-1
-               p-2  rounded-r-lg
-              ">
-                @for (item of projectMenuLinks(); track item.label) {
-                    <a
-         class="item flex gap-3 px-4 py-[10px]  md:w-[230px] "
-          [routerLink]="item.route"
-              routerLinkActive="active"
-         >
-           <img [src]="item.srcIcon" alt="">
-           <span class=" text-semibold "> {{item.label}}</span>
-         </a>
-                }
-              </div>
-            }
-
-        </div>
-
-       </div>
-
-    </nav>
-
+    class="sidebar-header flex px-4 gap-2 pb-8 items-center text-bold"
+    [class.hidden]="menuMobileCase() || footerMobileCase()"
+  >
+    <img src="../../../assets/icons/headerIcon.svg" alt="x" />
+    <span class=" " [class.hidden]="isCollapsed()"> TASKLY </span>
   </div>
 
-<!-- collapse && logout -->
-<div class="collapse-logout-container flex flex-col gap-1 pt-[24px]
-text-medium  align-text
+  <!-- main Navigate -->
+  <div class="saidbar-nav gap-1 flex-grow" [class.hidden]="footerMobileCase()">
+    <nav class="flex flex-col gap-1 text-semibold">
+      <a
+        routerLink="projects"
+        routerLinkActive="active"
+        class="flex gap-3 px-4 py-[10px] rounded-sm items-center"
+      >
+        <img src="../../../assets/icons/projects.svg" alt="x" />
 
-"
-   [class.hidden]=" footerMobileCase()"
->
+        <span class="md:w-[150px]" [class.hidden]="isCollapsed()"> Project </span>
+      </a>
+      <a
+        routerLink="projects/add"
+        routerLinkActive="active"
+        class="flex gap-3 px-3 py-[10px]"
+        routerLinkActive="active"
+        [class.hidden]="footerMobileCase()"
+      >
+        <img src="../../../assets/icons/statistics.svg" alt="x" />
+
+        <span class="md:w-[150px]" [class.hidden]="isCollapsed()"> Statistics </span>
+      </a>
+
+      <!--Active project -->
+      <div class="active-projects flex flex-col gap-2.5 pt-3">
+        <div
+          class="pt-4 border-t border-black/10 relative"
+          [class.hidden]="footerMobileCase() || !isActiveProject()"
+        >
+          <button
+            (click)="toggleProjectMenu()"
+            class="flex gap-3 p-3 rounded-t-[6px] bg-[#D7E2FF] w-full cursor-pointer"
+          >
+            <img src="../../../assets/icons/folder.svg" alt="x" />
+
+            <span class="text-semibold" [class.hidden]="isCollapsed()">Active Project Na...</span>
+            <!-- <img src="../../../../SVG.png" alt="x"> -->
+            <span [class.hidden]="isCollapsed()">
+              <img src="../../../assets/icons/vector.svg" alt="x" />
+            </span>
+          </button>
+
+          <!-- open in sidebar -->
+          @if (!isCollapsed() && isMenuOpen()) {
+            <div class="project-menu flex flex-col gap-1 p-2 rounded-b-[6px]">
+              @for (item of projectMenuLinks(); track item.label) {
+                <a
+                  class="item flex gap-3 px-4 py-[10px]"
+                  [routerLink]="item.route"
+                  routerLinkActive="active-MenuProject"
+                >
+                  <img [src]="item.srcIcon" alt="x" />
+                  <span class="text-semibold"> {{ item.label }}</span>
+                </a>
+              }
+            </div>
+          }
+          <!-- popup out sidebar -->
+          @if (isCollapsed() && isMenuOpen()) {
+            <div class="project-popup flex flex-col gap-1 p-2 rounded-r-lg">
+              @for (item of projectMenuLinks(); track item.label) {
+                <a
+                  class="item flex gap-3 px-4 py-[10px] md:w-[230px]"
+                  [routerLink]="item.route"
+                  routerLinkActive="active"
+                >
+                  <img [src]="item.srcIcon" alt="" />
+                  <span class="text-semibold"> {{ item.label }}</span>
+                </a>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- collapse && logout -->
+  <div
+    class="collapse-logout-container flex flex-col gap-1 pt-[24px] text-medium align-text"
+    [class.hidden]="footerMobileCase()"
+  >
+    <button
+      type="button"
+      class="collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer"
+      (click)="toggleCollapse()"
+      [class.hidden]="menuMobileCase()"
+    >
+      <img src="../../../assets/icons/collapse.svg" alt="x" />
+      <span [class.hidden]="isCollapsed()">collapse </span>
+    </button>
 
     <button
-    type="button"
-     class=" collapse-btn flex gap-3 py-[10px] px-3 cursor-pointer  "
-     (click)="toggleCollapse()"
-      [class.hidden]="menuMobileCase()"
-     >
-             <img src="../../../assets/icons/collapse.svg"  alt="x">
-     <span
-      [class.hidden]="isCollapsed()">collapse  </span>
-      </button>
-
-  <button
-   type="button"
-  (click)="logout()"
-  class=" logout-btn flex gap-3 py-[10px] px-3 cursor-pointer"
-  >
-        <img src="../../../assets/icons/logout.svg" alt="x">
-    <span
-     [class.hidden]="isCollapsed()">  Logout </span>
-
-   </button>
-
-</div>
-
-<!-- mobile layout -->
-@if (footerMobileCase() && !menuMobileCase()) {
-  <div class="flex  items-center justify-between mobile-footer
-   py-2 "
-   [class.justify-center]="!isActiveProject()">
-   @if (isActiveProject()) {
-<div class="flex justify-between icon-text-mobile w-[30%]">
-      @for (item of projectMenuLinks().slice(0, 2); track item.label) {
-                    <a
-         class="item  px-2   "
-          [routerLink]="item.route"
-             routerLinkActive="mobile-active"
-         >
-           <img [src]="item.srcIcon" width="20" alt="">
-           <span class="  "> {{item.label}}</span>
-         </a>
-                }
-</div>
-   }
-<div class="">
-  <a
-      routerLink="/MainLayout/Projects"
-     
-        routerLinkActive="mobile-active"
-      class="text-semibold a-mobile "
-
-       >
-        <img src="../../../assets/icons/projects.svg" alt="x">
-
-
-          <span
-          class="  md:w-[224px] "
-           [class.hidden]="isCollapsed()" > Project </span>
-      </a>
-</div>
- @if (isActiveProject()) {
-<div class="flex justify-between  icon-text-mobile w-[30%]">
-      @for (item of projectMenuLinks().slice( 2); track item.label) {
-                    <a
-         class="item  px-2   "
-          [routerLink]="item.route"
-           routerLinkActive="mobile-active"
-         >
-           <img [src]="item.srcIcon" width="20" alt="">
-           <span class="  "> {{item.label}}</span>
-         </a>
-                }
-</div>
- }
-
+      type="button"
+      (click)="logout()"
+      class="logout-btn flex gap-3 py-[10px] px-3 cursor-pointer"
+    >
+      <img src="../../../assets/icons/logout.svg" alt="x" />
+      <span [class.hidden]="isCollapsed()"> Logout </span>
+    </button>
   </div>
 
-}
+  <!-- mobile layout -->
+  @if (footerMobileCase() && !menuMobileCase()) {
+    <div
+      class="flex items-center justify-between mobile-footer py-2"
+      [class.justify-center]="!isActiveProject()"
+    >
+      @if (isActiveProject()) {
+        <div class="flex justify-between icon-text-mobile w-[30%]">
+          @for (item of projectMenuLinks().slice(0, 2); track item.label) {
+            <a class="item px-2" [routerLink]="item.route" routerLinkActive="mobile-active">
+              <img [src]="item.srcIcon" width="20" alt="" />
+              <span class="  "> {{ item.label }}</span>
+            </a>
+          }
+        </div>
+      }
+      <div class="">
+        <a routerLink="Projects" routerLinkActive="mobile-active" class="text-semibold a-mobile">
+          <img src="../../../assets/icons/projects.svg" alt="x" />
 
-
-
-
+          <span class="md:w-[224px]" [class.hidden]="isCollapsed()"> Project </span>
+        </a>
+      </div>
+      @if (isActiveProject()) {
+        <div class="flex justify-between icon-text-mobile w-[30%]">
+          @for (item of projectMenuLinks().slice(2); track item.label) {
+            <a class="item px-2" [routerLink]="item.route" routerLinkActive="mobile-active">
+              <img [src]="item.srcIcon" width="20" alt="" />
+              <span class="  "> {{ item.label }}</span>
+            </a>
+          }
+        </div>
+      }
+    </div>
+  }
 </aside>
-

@@ -41,9 +41,10 @@ color: rgba(4, 27, 60, 1);
 .project-menu{
 background: rgba(255, 255, 255, 1);
 }
-.active-project{
+.active-MenuProject{
 border-radius: 40px;
-background-color: rgba(241, 243, 255, 1);
+// background-color: rgba(241, 243, 255, 1);
+background-color: #F1F3FF;
 }
 
 .project-popup{
@@ -54,12 +55,8 @@ background-color: rgba(241, 243, 255, 1);
 // background: rgba(255, 255, 255, 0.7);
  backdrop-filter: blur(20px) ;
 background-color: rgba(215, 226, 255, 1);
-  
+
 }
-
-
-
-
 
 
 
@@ -87,7 +84,7 @@ letter-spacing: 0px;
 
 // -----------------------
 .icon-text-mobile{
- 
+
 font-weight: 400;
 font-style: Regular;
 font-size: 10px;
@@ -111,13 +108,13 @@ opacity: 1;
 
 }
 .a-mobile{
- 
+
 font-size: 10px;
 leading-trim: NONE;
 line-height: 15px;
 letter-spacing: 0px;
 vertical-align: middle;
-// 
+//
 }
 .mobile-active{
   color: rgba(0, 82, 204, 1);

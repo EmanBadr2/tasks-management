@@ -1,20 +1,19 @@
 <div class="project-form-page px-8  pb-[165px] pt-2">
   <div class=" header-action hidden md:flex flex-col gap-4 ">
     <div class="nav flex gap-2">
-      <button
-      (click)="goTo()"
-
-       class=" text-bold  header-text notActive-breadcrumb "
-       >PROJECTS </button>
+    <a routerLink="/MainLayout/projects"
+       class=" text-bold  header-text notActive-breadcrumb " >
+        PROJECTS </a>
 
       <img src="../../../../../assets/icons/headerp.svg"
       width=" 3.700000047683716"
      height="6"
       alt="">
 
-      <button
+
+      <a
        class=" text-bold header-text text-Primary "
-      > ADD NEW PROJECT</button>
+      > ADD NEW PROJECT</a>
     </div>
     <div class="page-title ">
       <h2 class=" text-semibold text-color "> Add New Project</h2>
@@ -103,8 +102,8 @@
     <button class=" py-3 px-6  rounded-sm cursor-pointer
     text-bold align-middle text-C-secondary "
     type="button"
-    (click)="goTo()"
-    > Back </button>
+   
+    >   <a routerLink="/MainLayout/projects">  Back </a> </button>
    <button
     class=" py-3 px-8 gap-2  rounded-sm cursor-pointer main-btn
     text-bold align-middle text-C-secondary

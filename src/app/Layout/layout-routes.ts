@@ -3,6 +3,8 @@ import { MainLayout } from './main-layout/main-layout';
 import { ErrorState } from '../shared/components/error-state/error-state';
 import { LoadingState } from '../shared/components/loading-state/loading-state';
 import { EmptyState } from '../shared/components/empty-state/empty-state';
+import { ProjectsRoute } from '../features/projects/projects.routing';
+
 
 export const LayoutRoutes: Routes = [
   {
@@ -12,13 +14,14 @@ export const LayoutRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'Projects',
+        redirectTo: 'projects',
         pathMatch: 'full',
       },
       {
-        path: 'Projects',
-        loadComponent: () =>
-          import('../features/projects/components/projects/projects').then((m) => m.Projects),
+        path: 'projects',
+        children : ProjectsRoute ,
+        // loadComponent: () =>
+        //   import('../features/projects/components/projects/projects').then((m) => m.Projects),
       },
  {
     path: 'error',

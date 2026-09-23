@@ -48,19 +48,19 @@ activeLink = this.router.url
   return  [
     {label : 'Epics' ,
       srcIcon : "assets/icons/epics.svg" ,
-      route: [ '/projects/', id,'epics']
+      route: [  '/MainLayout/projects/', id,'epics']
     } ,
      {label : 'Tasks' ,
       srcIcon : " assets/icons/tasks.svg"  ,
-      route: [ '/MainLayout/projects/', id,'tasks']
+      route: [  '/MainLayout/projects/', id,'tasks']
     } ,
      {label : 'Members' ,
       srcIcon : " assets/icons/members.svg" ,
-      route: `/MainLayout/Projects/${id}/epics`
+      route:   [  '/MainLayout/projects/', id,'member']
     } ,
      {label : 'Details' ,
       srcIcon : " assets/icons/details.svg" ,
-      route: `/MainLayout/Projects/${id}/epics`
+      route:  [ '/MainLayout/projects/', id,'details']
     } ,
    ]
    })

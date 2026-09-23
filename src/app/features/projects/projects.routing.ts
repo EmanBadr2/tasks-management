@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+
 export const ProjectsRoute: Routes = [
   {
     path: '',
@@ -7,56 +8,65 @@ export const ProjectsRoute: Routes = [
       import('./components/projects/projects').then(
         m => m.Projects
       ),
+
   },
 
   {
-    path: 'ProjectsList',
+    path: 'list',
     loadComponent: () =>
       import('./components/projects-list/projects-list').then((m) => m.ProjectsList),
   },
-  {
-    path: 'AddEditProjects',
+   {
+    path: 'add',
     loadComponent: () =>
       import('./components/add-edit-projects/add-edit-projects').then((m) => m.AddEditProjects),
   },
 
-  {
-    path: ':projectId',
-
-    children: [
-      {
-        path: 'epics',
+    {
+        path: ':id/epics',
 
         loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
       },
 
-      // {
 
-      //   path: 'tasks',
+  // {
+  //   path: ':id',
 
-      //   loadComponent: () =>
+  //   children: [
+  //     {
+  //       path: 'epics',
+  //       loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
+  //     },
+  //   ]
+  //   }
 
-      //     import(').then(
+  //     // {
 
-      //       m => m.TasksComponent
+  //     //   path: 'tasks',
 
-      //     ),
+  //     //   loadComponent: () =>
 
-      // },
+  //     //     import(').then(
 
-      // {
+  //     //       m => m.TasksComponent
 
-      //   path: 'members',
+  //     //     ),
 
-      //   loadComponent: () =>
+  //     // },
 
-      //     import('./pages/members/members.component').then(
+  //     // {
 
-      //       m => m.MembersComponent
+  //     //   path: 'members',
 
-      //     ),
+  //     //   loadComponent: () =>
 
-      // },
-    ],
-  },
+  //     //     import('./pages/members/members.component').then(
+
+  //     //       m => m.MembersComponent
+
+  //     //     ),
+
+  //     // },
+  //   ],
+  // },
 ];

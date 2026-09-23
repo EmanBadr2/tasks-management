@@ -13,7 +13,7 @@ import { Pagination } from '../../../../shared/pagination/pagination';
 export class ProjectsList {
  private router = inject(Router)
   projectList = input.required<ProjectListDetails[]>()
-  
+
   currentPage =signal(1)
   pageSize =signal(3)
   // --
@@ -31,9 +31,10 @@ selectProject(project:ProjectListDetails){
     '/MainLayout/projects/',
     project.id,
     'epics'
-  
+
   ]);
-  
+ 
+
 }
 
 
@@ -48,7 +49,7 @@ selectProject(project:ProjectListDetails){
 // ----------------
 // pagination
 
-// Get projects for the current page then 
+// Get projects for the current page then
   paginatedProjects  = computed( ()=>{
     const start =( this.currentPage()-1 )* this.pageSize()
     const end = start + this.pageSize()

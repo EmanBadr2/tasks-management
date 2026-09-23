@@ -1,12 +1,12 @@
 import { Component, inject, signal,  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AddProjectModel } from '../../models/projects';
 import { form, maxLength, minLength, required, FormField } from '@angular/forms/signals';
 import { ProjectsServiceService } from '../../services/projects-service.service';
 import { finalize } from 'rxjs';
 
 @Component({
-  imports: [FormField],
+  imports: [FormField, RouterLink],
   selector: 'app-add-edit-projects',
   styleUrl: './add-edit-projects.scss',
   templateUrl: './add-edit-projects.html',
@@ -29,9 +29,6 @@ export class AddEditProjects {
   })
 
 
-  goTo(){
-    this.router.navigate(['/MainLayout/Projects'])
-  }
 
 
   createProject(event:Event){
