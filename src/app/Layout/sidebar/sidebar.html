@@ -45,7 +45,6 @@
             <img src="../../../assets/icons/folder.svg" alt="x" />
 
             <span class="text-semibold" [class.hidden]="isCollapsed()">Active Project Na...</span>
-            <!-- <img src="../../../../SVG.png" alt="x"> -->
             <span [class.hidden]="isCollapsed()">
               <img src="../../../assets/icons/vector.svg" alt="x" />
             </span>
@@ -83,9 +82,13 @@
           }
         </div>
       </div>
+
     </nav>
   </div>
 
+
+
+  
   <!-- collapse && logout -->
   <div
     class="collapse-logout-container flex flex-col gap-1 pt-[24px] text-medium align-text"
@@ -128,7 +131,7 @@
         </div>
       }
       <div class="">
-        <a routerLink="Projects" routerLinkActive="mobile-active" class="text-semibold a-mobile">
+        <a routerLink="projects" routerLinkActive="mobile-active" class="text-semibold a-mobile">
           <img src="../../../assets/icons/projects.svg" alt="x" />
 
           <span class="md:w-[224px]" [class.hidden]="isCollapsed()"> Project </span>

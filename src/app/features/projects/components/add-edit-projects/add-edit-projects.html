@@ -7,14 +7,12 @@
     <a routerLink="/MainLayout/projects"
        class=" text-bold  header-text notActive-breadcrumb " >
         PROJECTS </a>
-      <img src="../../../../../assets/icons/headerp.svg"
-      width=" 3.700000047683716"
-     height="6"
-      alt="">
+      <img src="../../../../../assets/icons/headerp.svg" width=" 3.700000047683716" height="6"  alt="">
+
        @if(isEditMode()){
-         <a routerLink=""
-       class=" text-bold  header-text notActive-breadcrumb " >
-        PROJECT TITLE </a>
+         <a 
+       class=" text-bold uppercase header-text notActive-breadcrumb " >
+        {{projectModel().name}} </a>
       <img src="../../../../../assets/icons/headerp.svg" height="6" alt="">
        }
 

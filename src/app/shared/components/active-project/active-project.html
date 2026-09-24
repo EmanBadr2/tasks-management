@@ -1,0 +1,50 @@
+<!--Active project -->
+
+<div class="active-projects flex flex-col gap-2.5 pt-3">
+  @if (!footerMobileCase() || isActiveProject()) {
+    <div class="pt-4 border-t border-black/10 relative">
+      <button
+        (click)="toggleProjectMenu()"
+        class="flex gap-3 p-3 rounded-t-[6px] bg-[#D7E2FF] w-full cursor-pointer"
+      >
+        <img src="../../../assets/icons/folder.svg" alt="x" />
+
+        <span class="text-semibold" [class.hidden]="isCollapsed()">Active Project Na...</span>
+        <span [class.hidden]="isCollapsed()">
+          <img src="../../../assets/icons/vector.svg" alt="x" />
+        </span>
+      </button>
+
+      <!-- open in sidebar -->
+      @if (!isCollapsed() && isMenuOpen()) {
+        <div class="project-menu flex flex-col gap-1 p-2 rounded-b-[6px]">
+          @for (item of projectMenuLinks(); track item.label) {
+            <a
+              class="item flex gap-3 px-4 py-[10px]"
+              [routerLink]="item.route"
+              routerLinkActive="active-MenuProject"
+            >
+              <img [src]="item.srcIcon" alt="x" />
+              <span class="text-semibold"> {{ item.label }}</span>
+            </a>
+          }
+        </div>
+      }
+      <!-- popup out sidebar -->
+      @if (isCollapsed() && isMenuOpen()) {
+        <div class="project-popup flex flex-col gap-1 p-2 rounded-r-lg">
+          @for (item of projectMenuLinks(); track item.label) {
+            <a
+              class="item flex gap-3 px-4 py-[10px] md:w-[230px]"
+              [routerLink]="item.route"
+              routerLinkActive="active"
+            >
+              <img [src]="item.srcIcon" alt="" />
+              <span class="text-semibold"> {{ item.label }}</span>
+            </a>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

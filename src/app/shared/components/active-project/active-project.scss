@@ -1,0 +1,50 @@
+
+nav {
+
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0px;
+vertical-align: middle;
+color:var(--color-text );
+
+}
+.active{
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  color: rgba(0, 61, 155, 1);
+  border-radius: 4px;
+}
+// ---
+
+
+.active-projects span , .project-menu span{
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: rgba(4, 27, 60, 1);
+
+}
+
+
+.project-menu{
+background: rgba(255, 255, 255, 1);
+}
+.active-MenuProject{
+border-radius: 40px;
+// background-color: rgba(241, 243, 255, 1);
+background-color: #F1F3FF;
+}
+
+.project-popup{
+  position: absolute;
+  top: 20px;
+  left: calc(100% + 16px);
+  // ----------------------
+// background: rgba(255, 255, 255, 0.7);
+ backdrop-filter: blur(20px) ;
+background-color: rgba(215, 226, 255, 1);
+
+}
+
+
