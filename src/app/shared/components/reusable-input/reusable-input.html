@@ -12,14 +12,10 @@
 
 <div class="   ">
 
-  <label for=""> {{label()}}</label>
+  <label class="label" for=""> {{label()}}</label>
   <div class="input-container relative   ">
     <input
-  class="w-full  rounded border-0
-    px-4 py-3.5   focus:ring-blue-600/50
-  outline-none  ring-transparent focus:ring-2
-  disabled:cursor-not-allowed   disabled:opacity-60
-   "
+ class=" input input-base"
   [type]="type()  === 'password' && this.passwordVisible() ? 'text' : type() "
    [formField]="field()"
    [placeholder]="placeholder()"
