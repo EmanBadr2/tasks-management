@@ -1,0 +1,20 @@
+@if (toastService.visible()) {
+  <div
+    class="fixed right-5 top-5 z-50 rounded-lg px-5 py-3 text-white shadow-lg "
+    [class.bg-green-600]="toastService.type() === 'success'"
+    [class.bg-red-600]="toastService.type() === 'error'"
+       [class.bg-blue-600]="toastService.type() === 'info'"
+    [class.bg-yellow-500]="toastService.type() === 'warning'"
+  >
+   <span> {{ toastService.message() }} </span> 
+     <button
+      type="button"
+      class="text-xl leading-none "
+      (click)="toastService.hide()"
+    >
+      ×
+    </button>
+  </div>
+}
+
+

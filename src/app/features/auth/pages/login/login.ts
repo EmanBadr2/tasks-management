@@ -5,6 +5,8 @@ import { LoginRequest } from '../../models/LoginRequest';
 import { email, required, form, pattern  } from '@angular/forms/signals';
 import { ReusableInput } from '../../../../shared/components/reusable-input/reusable-input';
 import { Footer } from '../../components/footer/footer';
+import { ToastService } from '../../../../shared/components/toast/toast.service';
+
 @Component({
   imports: [ReusableInput, RouterLink, Footer],
   selector: 'app-login',
@@ -12,7 +14,7 @@ import { Footer } from '../../components/footer/footer';
   templateUrl: './login.html',
 })
 export class Login {
-
+ toast = inject(ToastService);
    authService=inject(Auth)
   router = inject(Router);
 
@@ -46,12 +48,16 @@ login(event:Event){
       localStorage.setItem( `access_token` ,res.access_token )
       localStorage.setItem( `refresh_token` ,res.refresh_token )
       localStorage.setItem( `userId` ,res.user.id )
+      this.toast.success(' success Login')
        this.router.navigate(['MainLayout']); 
 
     } ,
     error:(err)=>{
        console.log('STATUS:', err.status);
        console.log('err:', err.error);
+       console.log(err.msg);
+       
+       this.toast.error(err.error.msg)
     }
 
   })
