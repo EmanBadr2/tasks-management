@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { LoginRequest } from '../../models/LoginRequest';
 import { RegisterReqApi } from '../../models/RegisterRequest';
 import { LoginResponse } from '../../models/loginRes';
+import { forgetReq } from '../../models/resetPass';
 
 
 @Injectable({
@@ -32,6 +33,10 @@ export class Auth {
 
  logout():Observable< null | object>{
  return this.httpClient.post('/auth/v1/logout' , null)
+ }
+
+ forgotPassword(data:forgetReq):Observable<object>{
+  return this.httpClient.post(`/auth/v1/recover` , data)
  }
 
 }

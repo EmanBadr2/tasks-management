@@ -39,7 +39,6 @@ login(event:Event){
   if(this.LoginForm().invalid()){
     return;
   }
-  console.log(this.LoginForm().errors());
 
   this.authService.login(this.LoginModel()).subscribe({
             next:(res :any  )=>{
