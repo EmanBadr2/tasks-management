@@ -36,7 +36,13 @@ export const AuthRoutes : Routes = [
         m => m.ResetPassword
       ),
    },
-
+   
+   
+      { path : 'reset-password' , loadComponent : () =>
+      import('./components/reset-password/reset-password').then(
+        m => m.ResetPassword
+      ),
+   },
 
      ]
    } ,

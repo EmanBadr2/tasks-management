@@ -14,6 +14,10 @@ import { ToastService } from '../../../../shared/components/toast/toast.service'
   templateUrl: './login.html',
 })
 export class Login {
+  constructor(){
+    console.log(this.router.url);
+
+  }
  toast = inject(ToastService);
    authService=inject(Auth)
   router = inject(Router);
@@ -48,14 +52,14 @@ login(event:Event){
       localStorage.setItem( `refresh_token` ,res.refresh_token )
       localStorage.setItem( `userId` ,res.user.id )
       this.toast.success(' success Login')
-       this.router.navigate(['MainLayout']); 
+       this.router.navigate(['MainLayout']);
 
     } ,
     error:(err)=>{
        console.log('STATUS:', err.status);
        console.log('err:', err.error);
        console.log(err.msg);
-       
+
        this.toast.error(err.error.msg)
     }
 

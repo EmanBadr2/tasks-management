@@ -56,15 +56,8 @@ type="password"
 
  @for (state of passwordCheckedStats(); track state.label) {
  <div class="hint-container flex flex-row gap-2 ">
-  
-    @if (state.inCase) {
-    <!-- <img src="../../../../../assets/icons/Icon2.svg" alt="icon"> -->
-       <span  class="checked-icon"> done</span>
-    }
-    @else {
-       <span  class="checked-icon"> not </span>
-    <!-- <img src="../../../../../assets/icons/ckecked-icon.svg" alt="icon"> -->
-    }
+    <img [src]="state.inCase? `assets/icons/Icon2.svg` : `assets/icons/unChecked.svg` "
+    alt="checked-icon"  width="10px" >
     <p class=""> {{ state.label}} </p>
  </div>
  

@@ -28,7 +28,7 @@ export class ForgotPassword  implements OnInit{
 isSuccess = signal(false);
  remainingSeconds = signal(0);
  resendCount = signal(0);
-maxResend = 3;
+// maxResend = 3;
 canResend=computed(()=>
   this.remainingSeconds() === 0 && this.resendCount() <3
 )
@@ -42,13 +42,18 @@ canResend=computed(()=>
   email(Path.email , { message: 'Enter a valid email address' })
 })
 
-sendResetLink(event:Event){
-  event.preventDefault();
+submit() {
+  // event.preventDefault();
   if(this.forgetPassForm().invalid()|| this.isLoading()){
+  
     return;
   }
   this.isLoading.set(true)
-  this.authService.forgotPassword(this.forgetPassModel()).pipe(
+  this.sendResetLink()
+}
+sendResetLink() {
+   this.isLoading.set(true)
+    this.authService.forgotPassword(this.forgetPassModel()).pipe(
     finalize(() => {
        this.isLoading.set(false);
        this.toast.success('If an account exists with this email, we’ve sent a password reset link.')
@@ -57,13 +62,16 @@ sendResetLink(event:Event){
   ).subscribe({
       next: () => {
         this.resendCount.update(count => count + 1);
-         this.startResendTimer();
         this.isSuccess.set(true);
-        this.forgetPassModel.set({ email:''  })
-        this.forgetPassForm().reset()
+         this.startResendTimer();
+
+        // this.forgetPassModel.set({ email:''})
+        // this.forgetPassForm().reset()
+        // this.router.navigate(['/auth/reset'])
       },
           error: () => {
         this.toast.error('Something went wrong. Please try again.' )
+        this.startResendTimer()
 
       },
 
@@ -71,8 +79,17 @@ sendResetLink(event:Event){
   })
 
 
-
+  
 }
+ resend(): void {
+  console.log('resend');
+  
+    if (!this.canResend()) {
+     
+      return;
+    }
+    this.sendResetLink();
+  }
 
 
 startResendTimer(): void {   //countDown
@@ -84,12 +101,14 @@ startResendTimer(): void {   //countDown
         clearInterval(timer);
         this.toast.info(`Don't Receive An Email? Resend`)
         this.isLoading.set(false)
+          // this.router.navigate(['/auth/reset'])
         return 0;
       }
 
       return seconds - 1;
     });
   }, 1000);
+  
 }
 
 timeLeft = computed(() => {   //Time 00:00 to show in temp
@@ -99,5 +118,8 @@ timeLeft = computed(() => {   //Time 00:00 to show in temp
     .toString()
     .padStart(2, '0')}`;
 });
+
+
+
 
 }
