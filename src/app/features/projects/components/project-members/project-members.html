@@ -1,0 +1,138 @@
+
+@if (!hasServerErr()) {
+<div class="main w-full relative md:static">
+<!-- header -->
+<div class="breadcrumb-headerAction  flex justify-center md:justify-between items-end px-8 py-6 ">
+  <div class="breadcrumb  flex  flex flex-col  gap-4 ">
+
+      <nav class=" hidden md:flex items-center gap-2 text-bold  align-text text-xs ">
+        <a routerLink="/MainLayout/projects"
+         class="  notActive-breadcrumb " >PROJECTS</a>
+        <img src="../../../../../assets/icons/next.svg" alt="">
+          <a routerLink="/MainLayout/projects"
+         class="  notActive-breadcrumb " >PROJECT Name</a>
+        <img src="../../../../../assets/icons/next.svg" alt="">
+         <a
+         class="active-breadcrumb">MEMBERS</a>
+      </nav>
+
+    <h3 class=" text-semibold align-text text-color text-4xl">Project Members</h3>
+
+  </div>
+  <div class=" flex  header-action">
+    <button
+    class="main-btn flex items-center gap-2
+    px-1 py-2 md:py-3 md:px-6
+    absolute right-4 -bottom-8 md:static "
+    >
+      <img src="../../../../../assets/icons/member.svg" width="20px" alt="x">
+      <span class=" text-bold text-sm  hidden md:flex ">Invite Member</span>
+    </button>
+  </div>
+
+</div>
+<!-- content -->
+ <div class=" p-1 rounded  members-table w-11/12 md:w-7/12 m-auto bg-transparent md:bg-[#F1F3FF]">
+  <div class="  rounded-lg content bg-transparent md:bg-white  ">
+
+<table class="w-full border-separate border-spacing-y-3 md:border-spacing-y-0 ">
+    <thead class=" hidden md:table-header-group">
+      <tr class="text-sm text-left text-bold uppercase " >
+        <th class=" py-5 px-8  ">member</th>
+        <th class=" py-5 px-8 "> ROLe </th>
+      </tr>
+     </thead>
+    <tbody class="">
+      @for (member of allMembers(); track member.user_id) {
+          <tr class="  bg-white md:bg-transparent  ">
+
+        <td class="rounded-xl">
+          <div class=" member-info flex items-center gap-4 px-8">
+            <div class="avatar flex items-center justify-center ">
+              {{userService.createAvatar(member.metadata.name)}}  </div>
+            <div class=" flex  flex-col gap-0">
+              <p class="main-text1  ">{{member.metadata.name}}</p>
+              <span class="main-span "> {{member.email}}</span>
+            </div>
+          </div>
+        </td>
+        <td class=" px-8 py-9  rounded-xl  ">
+           <span
+           class="py-1 px-3 rounded-xl text-white
+            text-[10px] text-bold uppercase align-middle
+             bg-[#0052CC]">
+           {{member.role}}
+          </span>
+          </td>
+
+      </tr>
+
+      }
+
+
+
+     <tr class="  bg-white md:bg-transparent  ">
+
+        <td class="">
+          <div class=" member-info flex items-center gap-4 px-8">
+            <div class="avatar flex items-center justify-center ">EB </div>
+            <div class=" flex  flex-col gap-0">
+              <p class="main-text1  ">name</p>
+              <span class="main-span "> email</span>
+            </div>
+          </div>
+        </td>
+        <td class=" px-8 py-9  ">
+           <span
+           class="py-1 px-3 rounded-xl text-white
+            text-[10px] text-bold uppercase align-middle
+             bg-[#0052CC]">
+         role
+          </span>
+          </td>
+
+      </tr>
+    <tr class="  bg-white md:bg-transparent  ">
+
+        <td class="">
+          <div class=" member-info flex items-center gap-4 px-8">
+            <div class="avatar flex items-center justify-center ">EB </div>
+            <div class=" flex  flex-col gap-0">
+              <p class="main-text1  ">name</p>
+              <span class="main-span "> email</span>
+            </div>
+          </div>
+        </td>
+        <td class=" px-8 py-9  ">
+           <span
+           class="py-1 px-3 rounded-xl text-white
+            text-[10px] text-bold uppercase align-middle
+             bg-[#0052CC]">
+         role
+          </span>
+          </td>
+
+      </tr>
+
+
+
+
+    </tbody>
+
+  </table>
+
+  </div>
+
+
+ </div>
+
+</div>
+
+
+}
+
+
+@if (hasServerErr()) {
+  <app-error-state/>
+}
+

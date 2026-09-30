@@ -57,7 +57,7 @@ export class Sidebar implements OnInit {
       {
         label: 'Members',
         srcIcon: ' assets/icons/members.svg',
-        route: ['/MainLayout/projects/', id, 'member'],
+        route: ['/MainLayout/projects/', id, 'members'],
       },
       {
         label: 'Details',
@@ -67,7 +67,7 @@ export class Sidebar implements OnInit {
     ];
   });
 
- 
+
 
   getProjectID() {
     const  id=signal(this.router.url.split('/').at(3)! )

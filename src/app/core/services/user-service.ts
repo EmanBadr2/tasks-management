@@ -16,9 +16,21 @@ import { UserData } from '../models/user-interface';
   private httpClient = inject(HttpClient)
 
 
-getUserData():Observable<UserData | any>{
-  return this.httpClient.get('/auth/v1/user')
+getUserData():Observable<UserData>{
+  return this.httpClient.get<UserData>('/auth/v1/user')
 }
 
+
+
+
+  createAvatar(name:string) {
+   const userName = name?.trim().split(/\s+/);
+     if (userName.length === 1) {
+      const avatar = userName[0].slice(0, 2).toUpperCase();
+    return avatar
+  }
+  const avatar = (userName[0].charAt(0) + userName[userName.length-1].charAt(0)).toUpperCase()
+     return avatar
+  }
 
  }

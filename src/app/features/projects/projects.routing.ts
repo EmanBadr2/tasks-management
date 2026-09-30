@@ -1,14 +1,9 @@
 import { Routes } from '@angular/router';
 
-
 export const ProjectsRoute: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./components/projects/projects').then(
-        m => m.Projects
-      ),
-
+    loadComponent: () => import('./components/projects/projects').then((m) => m.Projects),
   },
 
   {
@@ -16,22 +11,27 @@ export const ProjectsRoute: Routes = [
     loadComponent: () =>
       import('./components/projects-list/projects-list').then((m) => m.ProjectsList),
   },
-   {
+  {
     path: 'add',
     loadComponent: () =>
       import('./components/add-edit-projects/add-edit-projects').then((m) => m.AddEditProjects),
   },
-  {  path: ':id/edit',
-     loadComponent: () =>
+  {
+    path: ':id/edit',
+    loadComponent: () =>
       import('./components/add-edit-projects/add-edit-projects').then((m) => m.AddEditProjects),
-   },
+  },
 
-    {
-        path: ':id/epics',
+  {
+    path: ':id/epics',
 
-        loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
-      },
-
+    loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
+  },
+  {
+    path: ':id/members',
+    loadComponent: () =>
+      import('./components/project-members/project-members').then((m) => m.ProjectMembers),
+  },
 
   // {
   //   path: ':id',

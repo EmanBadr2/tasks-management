@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { UserData } from '../../core/models/user-interface';
+import { userService } from '../../core/services/user-service';
 
 @Component({
   imports: [],
@@ -8,23 +9,16 @@ import { UserData } from '../../core/models/user-interface';
   templateUrl: './navbar.html',
 })
 export class Navbar {
-  userData = input<null | UserData>()
 
-  creatAvatar(){
-    if(this.userData())
-    {
-  const userName = this.userData()?.user_metadata.name.trim().split(/\s+/)
-  
-    if(userName?.length === 1){
-      const avatar = userName[0].charAt(0).toUpperCase()
-      return avatar
-    }
-      // const avatar = (userName[0].charAt(0) + userName[length-1].charAt(0)).toUpperCase()
-    //  return avatar
-    }
-    return ''
+  userData = input<null | UserData>();
+ userService=inject(userService)
+
+  createAvatar() {
+   const name = this.userData()?.user_metadata.name
+   if (!name) {
+    return '';
   }
+  return this.userService.createAvatar(name)
 
-
-
+  }
 }
