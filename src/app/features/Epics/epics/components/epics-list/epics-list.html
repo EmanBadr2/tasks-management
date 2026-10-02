@@ -1,0 +1,139 @@
+<div class=" w-full flex flex-col p-8 gap-10  relative md:static ">
+<!-- header -->
+<div class="breadcrumb-headerAction  md:flex justify-center md:justify-between items-end   ">
+  <div class="breadcrumb hidden  md:flex  flex flex-col  gap-4 ">
+
+      <nav class=" flex items-center gap-2 text-bold  align-text text-xs ">
+        <a routerLink="/MainLayout/projects"
+         class="  notActive-breadcrumb " >PROJECTS</a>
+        <img src="../../../../../assets/icons/next.svg" alt="">
+          <a routerLink="/MainLayout/projects"
+         class="  notActive-breadcrumb " >PROJECT Name</a>
+        <img src="../../../../../assets/icons/next.svg" alt="">
+         <a
+         class="active-breadcrumb">Epics</a>
+      </nav>
+
+    <h3 class=" text-semibold align-text text-color text-4xl">Project Epics</h3>
+
+  </div>
+  <div class=" md:flex gap-8  header-action  ">
+    <div class="search-input relative ">
+      <span class="absolute left-4 top-1/2 -translate-y-1/2 ">
+      <img src="../../../../../../assets/icons/search.svg"
+       class=" "  width="15px" alt="x">
+    </span>
+      <input type="search"
+       class=" input input-search"
+    placeholder="Search Epic..">
+    </div>
+
+    <button
+    class="main-btn  md:flex items-center gap-2
+    px-1.5 py-2 md:py-3 md:px-6
+    absolute right-4 -bottom-8 md:static "
+    >
+      <img src="../../../../../../assets/icons/plus.svg" width="15px" alt="x">
+      <span class=" text-bold text-sm  hidden md:flex ">New Epic </span>
+    </button>
+
+  </div>
+
+</div>
+
+<!-- grid  -->
+<div class=" grid md:grid-cols-2 gap-6 ">
+
+ 
+  @for (item of allProjectEpics(); track item.id) { 
+  
+  <div class=" card flex flex-col justify-between  p-4 rounded-lg">
+
+    <div class="epic-title pb-4  ">
+      <div class="py-1 px-2.5 rounded-sm bg-mainC w-1/4 flex items-center justify-center  ">
+        <span class="text-Primary text-bold text-sm">{{item.title}}</span>
+      </div>
+    </div>
+
+    <div class=" epic-description pb-3  ">
+      <h3 class=" text-h3 "
+      [class.hidden]="item.description !== ''">Sustainable Materials Integration</h3>
+      <h3 class=" text-h3 "> {{item.description}}</h3>
+
+     </div>
+     
+    <div class="epic-assignee flex flex-col gap-6  ">
+      <div class="member-avater-ass flex gap-3 items-center"> 
+        <span class="avatar flex items-center justify-center bg-primary text-white ">
+              {{userService.createAvatar(item.assignee.name)}}   </span>
+        <div> 
+          <span class=" text-medium text-sm muted-color">Assignee</span>
+          <h5 class="main-text1"> {{item.assignee.name}}</h5>
+        </div>
+      </div>
+      <div class="member-data pt-4 flex justify-between items-center ll"> 
+       <div class=" flex items-center gap-2">
+        <img src="../../../../../../assets/icons/memb.svg" width="15px" alt="">
+        <p> <span class=" main-span ">  Created by:</span> 
+           <span class="main-text1 "> {{item.created_by.name}}</span> 
+         </p>
+        
+       </div>
+       <div class=" flex items-center gap-2">
+        <img src="../../../../../../assets/icons/data.svg" width="15px" alt="">
+       <span class=" main-span ">  {{item.created_at | date: 'dd MMM yyyy' }}</span> 
+        
+       </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  }
+   <!-- <div class=" card flex flex-col justify-between  p-4 rounded-lg">
+
+    <div class="epic-number pb-4  ">
+      <div class="py-1 px-2.5 rounded-sm bg-mainC w-1/4 flex items-center justify-center  ">
+        <span class="text-Primary text-bold text-sm">kk</span>
+      </div>
+    </div>
+
+    <div class=" heading pb-3  ">
+      <h3 class=" text-h3 ">Sustainable Materials Integration</h3>
+     </div>
+     
+    <div class="epic-assignee flex flex-col gap-6  ">
+      <div class="member-ass flex gap-3 items-center"> 
+        <span> EB </span>
+        <div> 
+          <span class=" text-medium text-sm muted-color">Assignee</span>
+          <h5 class="main-text1"> Alice Moore</h5>
+        </div>
+      </div>
+      <div class="member-data pt-4 flex justify-between items-center ll"> 
+       <div class=" flex items-center gap-2">
+        <img src="../../../../../../assets/icons/memb.svg" width="15px" alt="">
+        <p> <span class=" main-span ">  Created by:</span> 
+           <span class="main-text1 "> Sarah Jenkins</span> 
+         </p>
+        
+       </div>
+       <div class=" flex items-center gap-2">
+        <img src="../../../../../../assets/icons/data.svg" width="15px" alt="">
+       <span class=" main-span ">  22 Oct 2025</span> 
+        
+       </div>
+      </div>
+
+    </div>
+
+  </div> -->
+
+
+
+</div>
+
+<!-- <div class="pagination  "> pagination</div> -->
+
+</div>

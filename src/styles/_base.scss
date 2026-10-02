@@ -11,6 +11,9 @@ vertical-align: middle;
 .text-Primary{
   color: var(--Primary);
 }
+.bg-primary{
+  background-color: var(--Primary);
+}
 .text-C-secondary{
   color: var(--color-text-secondary);
 }
@@ -20,6 +23,10 @@ vertical-align: middle;
 .muted-color{
   color: var(--muted-color);
 }
+.bg-mainC{
+  background-color: var(--Surface-Highest);
+}
+
 // ------------------------------
 
 .text-bold {
@@ -92,6 +99,16 @@ color: rgba(4, 27, 60, 1);
 
 
 }
+.text-h3{
+font-weight: 600;
+font-style: Semi Bold;
+font-size: 20px;
+leading-trim: NONE;
+line-height: 28px;
+letter-spacing: 0px;
+vertical-align: middle;
+color: var(--color-text);
+}
 .main-text1{
 color: var(--color-text);
 font-weight: 600;
@@ -101,26 +118,23 @@ line-height: 20px;
 letter-spacing: 0px;
 vertical-align: middle;
 
-// leading-trim: NONE;
-// letter-spacing: 0px;
-
 
 }
  .header-span   , .main-span{
 font-family: Inter;
 font-weight: 400;
 font-style: Regular;
-// font-size: 12px;
-font-size: 16px;
+font-size: 12px;
+// font-size: 16px;
 
 leading-trim: NONE;
 line-height: 16px;
 letter-spacing: 0px;
 vertical-align: middle;
-
-color: #434654;
+ color: var(--muted-color);
 
 }
+
 
 
 .cancel-btn{
@@ -134,5 +148,27 @@ text-align: center;
 vertical-align: middle;
 color: #4F5F7B;
 cursor: pointer;
+
+}
+
+
+.avatar{
+  width: 48px;
+height: 48px;
+border-radius: 12px;
+
+padding-top: 13.5px;
+padding-bottom: 14.5px;
+// background-color: #DAE2FF;
+// color: #003D9B;
+
+font-weight: 700;
+font-style: Bold;
+font-size: 14px;
+
+line-height: 20px;
+letter-spacing: 0px;
+text-align: center;
+vertical-align: middle;
 
 }

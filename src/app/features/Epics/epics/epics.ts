@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { EpicsList } from './components/epics-list/epics-list';
 
 @Component({
-  imports: [RouterLink],
+  imports: [EpicsList],
   selector: 'app-epics',
   styleUrl: './epics.scss',
   templateUrl: './epics.html',
