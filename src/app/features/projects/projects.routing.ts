@@ -27,50 +27,17 @@ export const ProjectsRoute: Routes = [
 
     loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
   },
+    {
+    path: ':id/epics/new',
+
+    loadComponent: () => import('../../features/Epics/epics/components/add-epic/add-epic').then((m) => m.AddEpic),
+  },
   {
     path: ':id/members',
     loadComponent: () =>
       import('./components/project-members/project-members').then((m) => m.ProjectMembers),
   },
 
-  // {
-  //   path: ':id',
 
-  //   children: [
-  //     {
-  //       path: 'epics',
-  //       loadComponent: () => import('../Epics/epics/epics').then((m) => m.Epics),
-  //     },
-  //   ]
-  //   }
 
-  //     // {
-
-  //     //   path: 'tasks',
-
-  //     //   loadComponent: () =>
-
-  //     //     import(').then(
-
-  //     //       m => m.TasksComponent
-
-  //     //     ),
-
-  //     // },
-
-  //     // {
-
-  //     //   path: 'members',
-
-  //     //   loadComponent: () =>
-
-  //     //     import('./pages/members/members.component').then(
-
-  //     //       m => m.MembersComponent
-
-  //     //     ),
-
-  //     // },
-  //   ],
-  // },
 ];

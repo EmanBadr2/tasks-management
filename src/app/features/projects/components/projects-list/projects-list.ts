@@ -33,14 +33,9 @@ selectProject(project:ProjectListDetails){
     'epics'
 
   ]);
- 
+
 
 }
-
-
-
-
-
 
 
 

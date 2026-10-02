@@ -1,0 +1,134 @@
+<div class="flex flex-col gap-8 md:py-10 px-6 W-full md:w-10/12 md:m-auto">
+  <div class="breadcrumb">
+    <nav class="hidden md:flex items-center gap-2 text-semibold uppercase align-text text-xs">
+      <a routerLink="/MainLayout/projects" class="notActive-breadcrumb">PROJECTS</a>
+      <img src="../../../../../assets/icons/next.svg" alt="" />
+      <a routerLink="/MainLayout/projects" class="notActive-breadcrumb">PROJECT Name</a>
+      <img src="../../../../../assets/icons/next.svg" alt="" />
+      <a routerLink="/MainLayout/projects" class="notActive-breadcrumb">Epics</a>
+      <img src="../../../../../assets/icons/next.svg" alt="" />
+      <a class="active-breadcrumb">New Epic</a>
+    </nav>
+  </div>
+  <div class="header w-full md:w-3/4 flex flex-col gap-2">
+    <h2 class="header-text">Create New Epic</h2>
+    <span class="header-span text-base"
+      >Define a major project phase or high-level milestone to group related tasks and track
+      architectural progress.</span
+    >
+  </div>
+
+  <div class="main-form-area pt-2 pb-4 rounded-lg">
+    <form class="flex flex-col gap-1 md:gap-8 p-8">
+      <div class="title grid md:grid-cols-4 gap-2 md:gap-6">
+        <div class="label pt-2">
+          <label for=""
+            >title
+            <span class="lable color-Error hidden">*</span>
+          </label>
+        </div>
+
+        <div class="flex flex-col gap-1 md:col-span-3">
+          <input
+            [formField]="epicForm.title"
+            type="text"
+            id=""
+            class="input input-base"
+            placeholder="e.g. Structural Foundation Phase"
+          />
+
+          @if (epicForm.title().touched() && epicForm.title().invalid()) {
+            @for (error of epicForm.title().errors(); track error) {
+              <div class="validation flex items-center gap-1.5">
+                <img src="../../../../../../assets/icons/notValid.svg" width="12px" alt="" />
+                <span class="validation-err">
+                  {{ error.message }}
+                </span>
+              </div>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="description grid md:grid-cols-4 gap-2 md:gap-6">
+        <div class="pt-2 flex flex-col gap-0">
+          <label for="" class="label m-0 p-0 leading-none">description </label>
+          <span class="hint m-0 p-0 leading-none">optional</span>
+        </div>
+
+        <div class="flex flex-col items-end gap-2 md:col-span-3">
+          <textarea
+            type="text"
+            [formField]="epicForm.description"
+            id=""
+            class="input input-base"
+            placeholder="e.g. Structural Foundation Phase"
+          >
+          </textarea>
+          <span class="hint text-medium m-0 p-0 leading-none">0 / 500 characters</span>
+        </div>
+      </div>
+
+      <div class="assignee-deadline grid md:grid-cols-2 gap-4 md:gap-8">
+        <div class="assignee flex flex-col gap-4">
+          <label for="" class="label"> Assignee </label>
+
+          <select
+            (click)="showMember()"
+            class="input input-base "
+            [formField]="epicForm.assignee_id"
+            placeholder="Select member"
+          >
+         <option value=" " disabled>Select member</option>
+            @if(!isLoadingMember()){
+
+            @for (member of allMembers(); track member.user_id) {
+              <option [value]="member.user_id" class=" flex items-center justify-between px-2">
+               <span >{{ member.metadata.name }} </span>
+               <!-- <span class="text-gray-200 text-sm"> {{ member.role }} </span> -->
+              </option>
+            }}@else {
+                <option value="" disabled>Loading..</option>
+            }
+            @if(hasServerErrMember()){
+              <option value="" disabled>Error in get member..</option>
+            }
+
+          </select>
+        </div>
+        <div class="deadline flex flex-col gap-4">
+          <label for="" class="label"> Deadline </label>
+          <input
+            type="date"
+            [min]="today"
+            [formField]="epicForm.deadline"
+            id=""
+            class="input input-base"
+            placeholder="e.g. Structural Foundation Phase"
+          />
+        </div>
+      </div>
+      <div
+        class="action pt-8 flex flex-col-reverse md:flex-row justify-end items-center gap-4 md:border-t border-gray-200"
+      >
+        <a
+        routerLink="/MainLayout/projects/${this.projectID()}/epics"
+        type="button" class="cancel-btn py-3 px-8">
+        cancel
+      </a>
+        <button
+          type="submit "
+          [disabled]="epicForm().invalid() || isLoading()"
+          class="auth-btn py-3 px-10 cursor-pointer
+          disabled:cursor-not-allowed disabled:opacity-60"
+          (click)="createEpic($event)"
+        >
+        @if(isLoading()){in progress.. }
+        @if(!isLoading() && !hasServerErr()){ Create Epic }
+        @if(hasServerErr()){ Retry}
+
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

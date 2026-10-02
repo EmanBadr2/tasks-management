@@ -18,7 +18,7 @@ export class MainLayout implements OnInit {
  ngOnInit() {
 
  this.getUserData()
-     
+
   }
 
 menuOpened = signal(false)
@@ -32,15 +32,14 @@ menuOpened = signal(false)
       this.userService.getUserData().subscribe({
     next : (res)=>{
       this.userData.set(res)
-      console.log(this.userData());
-      
+      // console.log(this.userData());
     } ,
     error  : (err)=>{
       console.log(err);
-      
+
     } ,
   })
   }
 
-  
+
 }

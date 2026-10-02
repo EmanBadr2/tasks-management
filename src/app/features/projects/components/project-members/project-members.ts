@@ -21,9 +21,6 @@ export class ProjectMembers implements OnInit {
     }
 
     this.getMembers()
-
-
-
   }
   userService=inject(userService)
   route = inject(ActivatedRoute)
