@@ -23,8 +23,12 @@ getUserData():Observable<UserData>{
 
 
 
-  createAvatar(name:string) {
-   const userName = name?.trim().split(/\s+/);
+  createAvatar(name:string| null) {
+ 
+   if(name== null){
+    return ;
+   }
+     const userName = name?.trim().split(/\s+/);
      if (userName.length === 1) {
       const avatar = userName[0].slice(0, 2).toUpperCase();
     return avatar

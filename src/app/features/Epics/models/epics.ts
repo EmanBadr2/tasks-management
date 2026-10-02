@@ -26,7 +26,7 @@ export interface EpicRes{
     }
        export interface   assignee {
             sub: string | null,
-            name:string ,
+            name:string | null,
             email:string | null,
             department: string | null,
         }
