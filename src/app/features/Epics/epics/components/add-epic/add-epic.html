@@ -111,11 +111,11 @@
       <div
         class="action pt-8 flex flex-col-reverse md:flex-row justify-end items-center gap-4 md:border-t border-gray-200"
       >
-        <a
-        routerLink="/MainLayout/projects/${this.projectID()}/epics"
+        <button
+        (click)=" cancel()"
         type="button" class="cancel-btn py-3 px-8">
         cancel
-      </a>
+      </button>
         <button
           type="submit "
           [disabled]="epicForm().invalid() || isLoading()"

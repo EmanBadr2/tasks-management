@@ -29,6 +29,7 @@
     </div>
 
     <button
+    (click)="gotoNewEpic()"
     class="main-btn  md:flex items-center gap-2
     px-1.5 py-2 md:py-3 md:px-6
     absolute right-4 -bottom-8 md:static "
@@ -44,9 +45,9 @@
 <!-- grid  -->
 <div class=" grid md:grid-cols-2 gap-6 ">
 
- 
-  @for (item of allProjectEpics(); track item.id) { 
-  
+
+  @for (item of allProjectEpics(); track item.id) {
+
   <div class=" card flex flex-col justify-between  p-4 rounded-lg">
 
     <div class="epic-title pb-4  ">
@@ -61,28 +62,28 @@
       <h3 class=" text-h3 "> {{item.description}}</h3>
 
      </div>
-     
+
     <div class="epic-assignee flex flex-col gap-6  ">
-      <div class="member-avater-ass flex gap-3 items-center"> 
+      <div class="member-avater-ass flex gap-3 items-center">
         <span class="avatar flex items-center justify-center bg-primary text-white ">
               {{userService.createAvatar(item.assignee.name)}}   </span>
-        <div> 
+        <div>
           <span class=" text-medium text-sm muted-color">Assignee</span>
           <h5 class="main-text1"> {{item.assignee.name}}</h5>
         </div>
       </div>
-      <div class="member-data pt-4 flex justify-between items-center ll"> 
+      <div class="member-data pt-4 flex justify-between items-center ll">
        <div class=" flex items-center gap-2">
         <img src="../../../../../../assets/icons/memb.svg" width="15px" alt="">
-        <p> <span class=" main-span ">  Created by:</span> 
-           <span class="main-text1 "> {{item.created_by.name}}</span> 
+        <p> <span class=" main-span ">  Created by:</span>
+           <span class="main-text1 "> {{item.created_by.name}}</span>
          </p>
-        
+
        </div>
        <div class=" flex items-center gap-2">
         <img src="../../../../../../assets/icons/data.svg" width="15px" alt="">
-       <span class=" main-span ">  {{item.created_at | date: 'dd MMM yyyy' }}</span> 
-        
+       <span class=" main-span ">  {{item.created_at | date: 'dd MMM yyyy' }}</span>
+
        </div>
       </div>
 
@@ -91,45 +92,6 @@
   </div>
 
   }
-   <!-- <div class=" card flex flex-col justify-between  p-4 rounded-lg">
-
-    <div class="epic-number pb-4  ">
-      <div class="py-1 px-2.5 rounded-sm bg-mainC w-1/4 flex items-center justify-center  ">
-        <span class="text-Primary text-bold text-sm">kk</span>
-      </div>
-    </div>
-
-    <div class=" heading pb-3  ">
-      <h3 class=" text-h3 ">Sustainable Materials Integration</h3>
-     </div>
-     
-    <div class="epic-assignee flex flex-col gap-6  ">
-      <div class="member-ass flex gap-3 items-center"> 
-        <span> EB </span>
-        <div> 
-          <span class=" text-medium text-sm muted-color">Assignee</span>
-          <h5 class="main-text1"> Alice Moore</h5>
-        </div>
-      </div>
-      <div class="member-data pt-4 flex justify-between items-center ll"> 
-       <div class=" flex items-center gap-2">
-        <img src="../../../../../../assets/icons/memb.svg" width="15px" alt="">
-        <p> <span class=" main-span ">  Created by:</span> 
-           <span class="main-text1 "> Sarah Jenkins</span> 
-         </p>
-        
-       </div>
-       <div class=" flex items-center gap-2">
-        <img src="../../../../../../assets/icons/data.svg" width="15px" alt="">
-       <span class=" main-span ">  22 Oct 2025</span> 
-        
-       </div>
-      </div>
-
-    </div>
-
-  </div> -->
-
 
 
 </div>
@@ -137,3 +99,5 @@
 <!-- <div class="pagination  "> pagination</div> -->
 
 </div>
+
+

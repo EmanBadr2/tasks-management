@@ -94,4 +94,7 @@ export class AddEpic implements OnInit {
     this.allMembers.set(this.ActiveProjectService.getMembers(this.projectID())[0].allMembers);
     console.log(this.allMembers());
   }
+  cancel(){
+    this.router.navigate(['/MainLayout/projects',this.projectID(), 'epics'])
+  }
 }
