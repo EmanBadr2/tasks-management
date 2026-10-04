@@ -1,13 +1,14 @@
 
-@if(epicState()==='success'){
-  <app-epics-list  [allProjectEpics]="allProjectEpics ()"> </app-epics-list>
-
-}
 
 @if(epicState()==='error'){
-  <app-error-state></app-error-state>
+  <app-error-state (retry)="getProjectEpics()"></app-error-state>
 }
 
 @if(epicState()==='loading'){
   <app-loading-state></app-loading-state>
+}
+
+@if(epicState()==='success'){
+  <app-epics-list  [allProjectEpics]="allProjectEpics ()"> </app-epics-list>
+
 }

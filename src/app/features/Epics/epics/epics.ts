@@ -28,6 +28,8 @@ export class Epics implements OnInit {
     if (id) {  this.projectID.set(id); }
     this.getProjectEpics()
 
+
+
   }
 
  route = inject(ActivatedRoute);
@@ -49,6 +51,7 @@ export class Epics implements OnInit {
             next: (res) => {
               this.allProjectEpics.set(res)
               this.toaster.success('this is all project epics');
+
                  this.epicState.set(  this.allProjectEpics().length === 0 ? 'empty'  :'success' )
                   //  console.log( this.allProjectEpics());
                        //  console.log(this.epicState());

@@ -9,7 +9,7 @@
 
 <!-- Empty State -->
  @if(projectState() === 'empty' ){
-<app-empty-state></app-empty-state>
+<app-empty-state (retry)="getAllProject()"></app-empty-state>
   }
 <!-- loading state -->
  @if(projectState() === 'loading'){
