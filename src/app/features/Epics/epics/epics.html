@@ -5,9 +5,11 @@
 }
 
 @if(epicState()==='loading'){
-  <app-loading-state></app-loading-state>
+  <app-loading-state   ></app-loading-state>
 }
-
+@if(epicState()=== 'empty'){
+  <app-empty-state   [feature]="'epic'" (addAction)="gotoNewEpic() "></app-empty-state>
+}
 @if(epicState()==='success'){
   <app-epics-list  [allProjectEpics]="allProjectEpics ()"> </app-epics-list>
 

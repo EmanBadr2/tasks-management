@@ -46,6 +46,9 @@ getAllProject(){
 
 }
 
+  gotoNewProject(){
+     this.router.navigate(['MainLayout/projects' ,'epics'])
+  }
 
 
 

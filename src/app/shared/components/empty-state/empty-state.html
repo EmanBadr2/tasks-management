@@ -1,19 +1,60 @@
-  <div class="  flex  items-center justify-center px-6 pt-10 w-[90%]">
-    <div class=" flex flex-col items-center justify-center gap-2 text-center gap-11  ">
-      <div class=""> <img src="../../../../../assets/icons/empty.svg" width="230px"  alt=""></div>
-    <div class="emtpy-s-mess flex flex-col gap-4 ">
-      <h3 class=" text-semibold text-[36px] text-[#041B3C] align-middle">No Projects</h3>
-      <p class=" text-regular text-[18px] align-middle w-[448px] text-[#434654]"> You don’t have any projects yet. Start by defining
-your first architectural workspace to begin tracking
-tasks and epics.</p>
+<div class="flex items-center justify-center p-9 w-10/12 m-auto">
+  <div class="flex flex-col items-center justify-center text-center gap-7">
+    <div class="  flex items-center justify-center pb-0 ">
+      <!-- <img src="../../../../../assets/icons/empty.svg" width="230px" alt="" /> -->
+      <img [src]="(feature()==='project')? '../../../../../assets/icons/empty.svg'  : '../../../../../assets/icons/E.svg' " width="250px" alt="" />
+    </div>
+    <div class="emtpy-s-mess flex flex-col gap-4">
+      <h2 class="text-semibold text-3xl text-color align-middle">
+        @if(feature()==='project'){ No Projects }
+          @else{ No epics in this project yet. }
+
+
+      </h2>
+    </div>
+    <div class="m-auto w-9/12">
+      <p class="text-regular text-lg align-middle muted-color">
+
+ @if(feature()==='project'){   You don’t have any projects yet. Start by defining your first architectural workspace to
+        begin tracking tasks and epics. }
+          @else{ Break down your large project into manageable
+epics to track progress better and maintain
+architectural clarity. }
+
+      </p>
+    </div>
+
+    <div class=" ">
+      <button
+      (click)="addAction.emit()"
+        class="py-4 px-8 rounded-sm gap-2 auth-btn cursor-pointer flex items-center justify-center gap-3"
+      >
+        <img [src]="(feature()==='project')? '../../../../../assets/icons/addd.svg'  :
+         '../../../../../assets/icons/gE.svg' " alt="" />
+        <span class="text-white text-medium text-base align-middle">
+            @if(feature()==='project'){ Add new Project }
+          @else{ Create First Epic }
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="flex items-center justify-center px-6 pt-10 w-[90%]">
+  <div class="flex flex-col items-center justify-center gap-2 text-center gap-11">
+    <div class=""><img src="../../../../../assets/icons/empty.svg" width="230px" alt="" /></div>
+    <div class="emtpy-s-mess flex flex-col gap-4">
+      <h3 class="text-semibold text-[36px] text-[#041B3C] align-middle">No Projects</h3>
+
+      <p class="text-regular text-[18px] align-middle w-[448px] text-[#434654]">
+        You don’t have any projects yet. Start by defining your first architectural workspace to
+        begin tracking tasks and epics.
+      </p>
     </div>
     <div class=" ">
-    <a routerLink="/MainLayout/AddEditProjects" >
-      <button  class=" py-3 px-6 rounded-sm gap-2 btn  cursor-pointer" >
-      <span class=" text-white text-medium text-base align-middle">Add new Project </span>
-    </button>
-      </a>
-</div>
- </div>
+      <button class="py-3 px-6 rounded-sm gap-2 auth-btn cursor-pointer">
+        <span class="text-white text-medium text-base align-middle">Add new Project </span>
+      </button>
+    </div>
   </div>
-
+</div> -->

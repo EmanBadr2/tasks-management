@@ -13,9 +13,10 @@ import { projectEpic } from '../models/epics';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ErrorState } from '../../../shared/components/error-state/error-state';
 import { LoadingState } from '../../../shared/components/loading-state/loading-state';
+import { EmptyState } from '../../../shared/components/empty-state/empty-state';
 
 @Component({
-  imports: [EpicsList, ErrorState, LoadingState],
+  imports: [EpicsList, ErrorState, LoadingState, EmptyState],
   selector: 'app-epics',
   styleUrl: './epics.scss',
   templateUrl: './epics.html',
@@ -42,7 +43,7 @@ export class Epics implements OnInit {
   toaster = inject(ToastService);
   epicsService = inject(EpicsService);
   allProjectEpics = signal<projectEpic[]>([])
-  epicState=signal<State>('loading')
+  epicState=signal<State>('empty')
 
    getProjectEpics(){
       this.epicState.set('loading')
@@ -62,6 +63,10 @@ export class Epics implements OnInit {
                  this.epicState.set('error')
             },
           });
+  }
+
+  gotoNewEpic(){
+     this.router.navigate(['MainLayout/projects',this.projectID() ,'epics','new'])
   }
 
 
