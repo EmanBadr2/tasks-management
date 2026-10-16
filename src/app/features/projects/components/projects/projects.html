@@ -1,21 +1,36 @@
-
 <!-- <a routerLink='AddEditProjects' > test</a> -->
 
 <!--  project list  -->
- @if(projectState() === 'success'){
-   <app-projects-list [projectList]="projectList()" ></app-projects-list>
- }
+@if (projectState() === 'success') {
+  <app-projects-list [projectList]="projectList()"></app-projects-list>
 
+    @if (paginationMetadataError()) {
+    <p class="mt-4 text-sm text-[#4F5F7B]" role="status">
+      Unable to determine the total number of projects.
+      Pagination is temporarily unavailable.
+    </p>
+  }
+  <!-- pagination -->
+  <div class="p-8 flex justify-end">
+    <app-pagination
+      [currentPage]="currentPage()"
+      [pageSize]="pageSize()"
+      [totalPages]="pageSize()"
+      [totalItems]="projectList().length"
+      (pageChange)="changePage($event)"
+    />
+  </div>
+}
 
 <!-- Empty State -->
- @if(projectState() === 'empty' ){
-<app-empty-state [feature]="'project'"  (addAction)="gotoNewProject() " ></app-empty-state>
-  }
+@if (projectState() === 'empty') {
+  <app-empty-state [feature]="'project'" (addAction)="gotoNewProject()"></app-empty-state>
+}
 <!-- loading state -->
- @if(projectState() === 'loading'){
- <app-loading-state></app-loading-state>
- }
- <!-- error state -->
-  @if(projectState() === 'error'){
-   <app-error-state   (retry)="getAllProject()"></app-error-state>
-  }
+@if (projectState() === 'loading') {
+  <app-loading-state></app-loading-state>
+}
+<!-- error state -->
+@if (projectState() === 'error') {
+  <app-error-state (retry)="getAllProject()"></app-error-state>
+}

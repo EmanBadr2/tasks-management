@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import {  inject, Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { AddProjectModel, ProjectListDetails } from '../models/projects';
 import { Members } from '../models/members';
 
@@ -19,6 +19,30 @@ export class ProjectsServiceService {
         return this.httpClient.get< ProjectListDetails[] >(`/rest/v1/rpc/get_projects` )
  }
 
+//  getProjectsWithPagination(limit:number , offset:number):Observable<  object>{
+//         return this.httpClient.get(`/rest/v1/rpc/get_projects?limit=${limit}&offset=${offset}`,{
+//                 headers: { Prefer: 'count=exact', },
+//                    observe: 'response',
+
+//         } )
+//  }
+
+
+  getProjectsWithPagination(limit: number, offset: number): Observable<object | any > {
+    const params = new HttpParams().set('limit', limit).set('offset', offset);
+    return this.httpClient.get(`/rest/v1/rpc/get_projects`, {
+        params,
+        headers: { Prefer: 'count=exact' }, 
+        observe: 'response',               
+      })
+      .pipe(
+        map((res) => ({
+          items: res.body ?? [],
+          totalCount: parseTotalCount(res.headers.get('Content-Range')),
+        })),
+      );
+  }
+
  getProjectByID(id:string):Observable<ProjectListDetails[]>{
    return this.httpClient.get<ProjectListDetails[]>(`/rest/v1/rpc/get_projects?id=eq.${id}`)
  }
@@ -32,3 +56,8 @@ export class ProjectsServiceService {
  }
 
 }
+
+function parseTotalCount(arg0 : string | null): number {
+  throw new Error('Function not implemented.');
+}
+
