@@ -19,5 +19,12 @@ export class EpicsService {
  }
 
 
+getEpicDetails(projectID:string , epicID :string ):Observable<projectEpic[]>{
+  return this.httpClient.get<projectEpic[]>(`/rest/v1/project_epics?project_id=eq.${projectID}&id=eq.${epicID}`)
+ }
+ 
+ 
+
+
 
 }

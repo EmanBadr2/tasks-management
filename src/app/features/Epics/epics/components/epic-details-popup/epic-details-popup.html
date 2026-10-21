@@ -1,0 +1,191 @@
+
+
+
+
+
+
+@if(epicState()==='error'){
+  <app-error-state ></app-error-state>
+}
+
+@if(epicState()==='loading'){
+  <app-loading-state   ></app-loading-state>
+}
+@if(epicState()=== 'empty'){
+  <app-empty-state   ></app-empty-state>
+}
+
+
+
+  <div
+  class="fixed inset-0 z-50 flex items-end justify-center md:items-center backdrop-blur-sm md:p-8  layout"
+ 
+>
+  <button
+    type="button"
+    aria-label="Close popup"
+    class="absolute inset-0 h-full w-full cursor-default bg-transparent"
+    (click)="closeP()"
+  ></button>
+  <!-- Modal -->
+
+@if(epicState()==='success'){ 
+  <section
+    class="flex flex-col px-8 rounded-t-2xl relative z-10
+    md:rounded-xl bg-white shadow-2xl
+     md:max-h-[90vh] max-h-[92dvh]  overflow-auto
+     w-full md:w-3/5 
+     "
+  >
+    <!-- Header -->
+
+    <header class="flex flex-col justify-between gap-4 pt-8 ">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="../../../../../../assets/icons/ContainerEpic.svg" alt="" />
+          <span class="text-xs text-bold text-color opacity-60"> Epic-101 </span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            type="button"
+            class="flex items-center cursor-pointer gap-1.5 text-xs text-slate-700 hover:text-blue-700"
+            (click)="copyLink()"
+          >
+            <img src="../../../../../../assets/icons/copyl.svg" alt="" />
+            <span class="text-medium muted-color text-sm">Copy link</span>
+          </button>
+
+          <button
+            type="button"
+            aria-label="Close epic details"
+            class="rounded-md cursor-pointer p-1 text-slate-500 hover:bg-slate-100"
+            (click)="closeP()"
+          >
+            <img src="../../../../../../assets/icons/close.svg" alt="" />
+          </button>
+        </div>
+      </div>
+      <div class="custom-border p-3 rounded-xl gap-3 text-bold text-color text-xl">
+      {{epicDetails()[0]?.title }}
+      </div>
+    </header>
+
+    <!--  model body -->
+    <div class="model-body py-8 flex flex-col gap-8">
+      <div class="description">
+        <textarea 
+          class="w-full resize-none rounded-lg custom-border p-3 
+          text-sm leading-6 text-slate-700 outline-none placeholder:text-slate-400 
+          focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          placeholder="Add a description..."
+        > {{epicDetails()[0]?.description }}</textarea>
+      </div>
+      <!-- ass -->
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="flex flex-col gap-2">
+          <span class="label opacity-40">Assignee</span>
+          <div class="custom-border rounded-xl px-2 py-1 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <span
+                class="text-bold text-sm align-text popup-avatar flex items-center justify-center py-1.5 px-2 rounded-full"
+              >
+                {{userService.createAvatar(epicDetails()[0]?.assignee.name)}}
+              </span>
+              <span class="text-medium text-color"> {{epicDetails()[0]?.assignee.name }} </span>
+            </div>
+            <button class="cursor-pointer">
+              <img src="../../../../../../assets/icons/dropdown.svg" width="25px" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="label opacity-40">deadline</span>
+          <div class="custom-border rounded-xl px-3 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <img src="../../../../../../assets/icons/data.svg" width="15px" alt="" />
+              <span class="text-medium text-sm text-color "> {{ epicDetails()[0]?.deadline | date: 'dd MMM yyyy' }}</span>
+              <!-- <span class="text-medium text-sm text-color"> 12/12/22</span> -->
+            </div>
+            <button class="cursor-pointer">
+              <img src="../../../../../../assets/icons/dropdown.svg" width="25px" alt="" />
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="label opacity-40">Create By</span>
+          <div class="custom-border rounded-xl px-2 py-1 flex items-center">
+            <div class="flex items-center gap-2">
+              <span
+                class="text-bold text-sm align-text popup-avatar flex items-center justify-center py-1.5 px-2 rounded-full"
+              >
+                {{userService.createAvatar(epicDetails()[0]?.created_by.name)}}
+              </span>
+              <span class="text-medium text-color">{{epicDetails()[0]?.created_by.name }} </span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <span class="label opacity-40">create at</span>
+          <div class="custom-border rounded-xl px-3 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <img src="../../../../../../assets/icons/data.svg" width="15px" alt="" />
+              <span class="text-medium text-sm text-color "> {{ epicDetails()[0]?.created_at| date: 'dd MMM yyyy' }}</span>
+              <!-- <span class="text-medium text-sm text-color"> 12/12/22</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- tasks -->
+      <div class="tasks-section flex flex-col gap-6">
+        <div class=" tast-header flex items-center justify-between">
+          <h3 class=" text-semibold text-color text-lg">tasks</h3>
+           <button
+        (click)="addTask()"
+        class="flex items-center gap-1.5 cursor-pointer"
+      >
+        <img src="../../../../../../assets/icons/addprim.svg" width="12px" alt="x" />
+        <span class="text-bold text-sm   text-Primary">Add Task </span>
+      </button>
+      </div>
+      <!-- empty-state -->
+       @if(isEmptyState()){
+          <div class="empty-state border-dashed rounded-lg p-10 flex flex-col items-center gap-4">
+        <img src="../../../../../../assets/icons/emptytask.svg" alt="">
+        <div class=""> 
+          <h4 class="text-medium  text-color text-base">No tasks have been added to this epic yet</h4>
+        </div>
+          <button
+        (click)="addTask()"
+        class="main-btn flex items-center gap-1.5 px-2 py-2 md:py-3 md:px-6 "
+      >
+        <img src="../../../../../../assets/icons/plus.svg" width="12px" alt="x" />
+        <span class="text-bold text-sm ">Add Task </span>
+      </button>
+      </div>
+       }
+       @else{
+        <p> all tasks</p>
+       }
+    
+
+      </div>
+    </div>
+  </section>
+}
+@if(epicState()==='error'){
+  <div class="bg-white">
+  <app-error-state ></app-error-state> 
+</div>
+}
+
+@if(epicState()==='loading'){
+  <p>loading</p>
+}
+@if(epicState()=== 'empty'){
+  <app-empty-state   ></app-empty-state>
+}
+</div>
+
+
+

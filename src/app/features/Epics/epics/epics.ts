@@ -55,7 +55,7 @@ export class Epics implements OnInit {
 
                  this.epicState.set(  this.allProjectEpics().length === 0 ? 'empty'  :'success' )
                   //  console.log( this.allProjectEpics());
-                       //  console.log(this.epicState());
+                        // console.log(this.epicState());
             },
             error: (err) => {
               console.log(err);
